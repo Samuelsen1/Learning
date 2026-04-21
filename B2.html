@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutsch B2 — Complete Study Programme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0f0c;
+  --surface: #161810;
+  --surface2: #1e2018;
+  --surface3: #252820;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --gold: #c9a84c;
+  --gold2: #e8c97a;
+  --gold-dim: rgba(201,168,76,0.15);
+  --green: #5a9e6f;
+  --green-light: rgba(90,158,111,0.18);
+  --red: #b85c5c;
+  --red-light: rgba(184,92,92,0.18);
+  --blue: #5b8db8;
+  --blue-light: rgba(91,141,184,0.18);
+  --text: #e8e4d8;
+  --text2: #a09b8c;
+  --text3: #6b6760;
+  --radius: 12px;
+  --radius-lg: 18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ── SPLASH / COVER ── */
+#splash{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity 0.8s ease, visibility 0.8s;
+}
+#splash.gone{opacity:0;visibility:hidden;pointer-events:none}
+.splash-de{font-family:'Cormorant Garamond',serif;font-size:clamp(80px,15vw,160px);font-weight:300;color:var(--gold);line-height:1;letter-spacing:-0.03em;animation:fadeUp 1s ease both}
+.splash-sub{font-size:13px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text3);margin-top:12px;animation:fadeUp 1s 0.3s ease both;opacity:0;animation-fill-mode:forwards}
+.splash-btn{margin-top:48px;padding:14px 40px;background:var(--gold);color:#0e0f0c;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:4px;cursor:pointer;animation:fadeUp 1s 0.6s ease both;opacity:0;animation-fill-mode:forwards;transition:transform 0.15s,background 0.15s}
+.splash-btn:hover{background:var(--gold2);transform:translateY(-2px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── MAIN APP ── */
+#app{display:none}
+#app.visible{display:block}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:260px;
+  background:var(--surface);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;z-index:100;overflow-y:auto;
+}
+.sidebar-logo{padding:24px 20px 16px;border-bottom:1px solid var(--border)}
+.sidebar-logo span{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--gold)}
+.sidebar-logo sub{font-size:11px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);display:block;margin-top:2px}
+
+/* progress ring in sidebar */
+.sidebar-prog{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.prog-ring-wrap{position:relative;width:46px;height:46px;flex-shrink:0}
+.prog-ring-wrap svg{transform:rotate(-90deg)}
+.prog-ring-bg{fill:none;stroke:var(--surface3);stroke-width:3}
+.prog-ring-fill{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;transition:stroke-dashoffset 0.6s ease;stroke-dasharray:126;stroke-dashoffset:126}
+.prog-ring-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--gold)}
+.prog-text{flex:1}
+.prog-text strong{font-size:12px;font-weight:600;color:var(--text);display:block}
+.prog-text span{font-size:11px;color:var(--text3)}
+
+.nav-section{padding:8px 0}
+.nav-label{font-size:9px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--text3);padding:6px 20px 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 20px;cursor:pointer;font-size:13px;color:var(--text2);transition:all 0.15s;border-left:2px solid transparent;position:relative}
+.nav-item:hover{background:var(--surface2);color:var(--text)}
+.nav-item.active{background:var(--gold-dim);color:var(--gold);border-left-color:var(--gold)}
+.nav-item .nav-icon{width:18px;text-align:center;font-size:14px;flex-shrink:0}
+.nav-item .nav-check{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--border2);margin-left:auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.nav-item .nav-check.done{background:var(--green);border-color:var(--green)}
+.nav-item .nav-check.done::after{content:'✓';font-size:9px;color:#fff;font-weight:700}
+
+/* ── CONTENT AREA ── */
+#content{margin-left:260px;min-height:100vh}
+
+/* ── PAGE HEADER ── */
+.page-header{
+  padding:48px 48px 32px;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.page-header::before{
+  content:'';position:absolute;top:-60px;right:-40px;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%);
+}
+.page-header-label{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
+.page-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;color:var(--text);line-height:1.1}
+.page-header h1 em{color:var(--gold);font-style:italic}
+.page-header p{color:var(--text2);font-size:14px;margin-top:10px;max-width:600px;line-height:1.7}
+
+/* ── SECTIONS ── */
+.section{display:none;padding:40px 48px 80px;max-width:960px}
+.section.active{display:block}
+
+/* ── UNIT CARDS ── */
+.unit-grid{display:grid;gap:16px;margin-top:24px}
+.unit-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden;
+  transition:border-color 0.2s;
+}
+.unit-card:hover{border-color:var(--border2)}
+.unit-card.completed{border-color:rgba(90,158,111,0.3)}
+.unit-head{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 20px;cursor:pointer;
+}
+.unit-head:hover .unit-expand{color:var(--gold)}
+.unit-number{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--surface3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:600;color:var(--text3);flex-shrink:0;
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+}
+.unit-card.completed .unit-number{background:var(--green-light);color:var(--green)}
+.unit-info{flex:1}
+.unit-info h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
+.unit-info span{font-size:12px;color:var(--text3)}
+.unit-tag{
+  font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  padding:3px 10px;border-radius:20px;flex-shrink:0;
+}
+.tag-grammar{background:var(--blue-light);color:var(--blue)}
+.tag-vocab{background:rgba(201,168,76,0.15);color:var(--gold)}
+.tag-skill{background:var(--green-light);color:var(--green)}
+.tag-test{background:var(--red-light);color:var(--red)}
+.unit-complete-btn{
+  width:22px;height:22px;border-radius:5px;
+  border:1.5px solid var(--border2);background:transparent;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all 0.15s;flex-shrink:0;margin-left:4px;
+}
+.unit-complete-btn.done{background:var(--green);border-color:var(--green)}
+.unit-complete-btn.done::after{content:'✓';font-size:11px;color:#fff;font-weight:700}
+.unit-expand{font-size:10px;color:var(--text3);transition:transform 0.2s,color 0.15s;flex-shrink:0}
+.unit-card.open .unit-expand{transform:rotate(180deg)}
+
+.unit-body{display:none;padding:0 20px 20px;border-top:1px solid var(--border)}
+.unit-card.open .unit-body{display:block}
+
+/* ── LESSON CONTENT ── */
+.content-block{margin-top:16px}
+.content-block h4{
+  font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.lesson-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:8px 0;border-bottom:1px solid var(--border);
+  font-size:13.5px;color:var(--text2);line-height:1.55;
+}
+.lesson-item:last-child{border-bottom:none}
+.lesson-cb{
+  width:16px;height:16px;margin-top:2px;border-radius:4px;
+  border:1.5px solid var(--border2);background:transparent;
+  cursor:pointer;appearance:none;flex-shrink:0;transition:all 0.15s;
+}
+.lesson-cb:checked{background:var(--green);border-color:var(--green);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:center;background-size:9px}
+.lesson-text em{color:var(--text);font-style:normal;font-weight:500}
+
+.example-box{
+  background:var(--surface2);border-left:2px solid var(--gold);
+  border-radius:0 8px 8px 0;padding:12px 14px;margin-top:12px;
+}
+.example-box .ex-label{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.example-box p{font-size:13px;color:var(--text2);line-height:1.7}
+.example-box .de{font-size:14px;color:var(--text);font-style:italic;margin-bottom:3px}
+.example-box .en{font-size:12px;color:var(--text3)}
+
+/* ── READING PASSAGE ── */
+.reading-passage{
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:var(--radius);padding:24px 28px;margin-top:16px;
+  position:relative;
+}
+.reading-passage::before{
+  content:'LESETEXT';
+  position:absolute;top:14px;right:16px;
+  font-size:9px;letter-spacing:0.2em;color:var(--text3);font-weight:600;
+}
+.reading-passage h3{
+  font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;
+  color:var(--gold);margin-bottom:4px;
+}
+.reading-passage .author{font-size:11px;color:var(--text3);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.reading-passage p{font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:12px}
+.reading-passage p:last-child{margin-bottom:0}
+
+/* ── QUIZ / TEST ── */
+.quiz-block{margin-top:16px}
+.quiz-question{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;
+  transition:border-color 0.2s;
+}
+.quiz-question.correct{border-color:var(--green)!important;background:var(--green-light)}
+.quiz-question.incorrect{border-color:var(--red)!important;background:var(--red-light)}
+.quiz-q{font-size:14px;color:var(--text);margin-bottom:12px;font-weight:500;line-height:1.5}
+.quiz-q em{color:var(--gold);font-style:italic}
+.quiz-options{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 13px;border-radius:8px;
+  border:1px solid var(--border);background:var(--surface);
+  cursor:pointer;font-size:13px;color:var(--text2);
+  transition:all 0.15s;
+}
+.quiz-opt:hover:not(.selected):not(.locked){border-color:var(--gold);color:var(--text)}
+.quiz-opt.selected{border-color:var(--gold);background:var(--gold-dim);color:var(--gold)}
+.quiz-opt.correct-ans{border-color:var(--green);background:var(--green-light);color:var(--green)}
+.quiz-opt.wrong-ans{border-color:var(--red);background:var(--red-light);color:var(--red)}
+.quiz-opt.locked{cursor:default}
+.quiz-opt-letter{
+  width:22px;height:22px;border-radius:5px;
+  background:var(--surface3);font-size:11px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text3);flex-shrink:0;
+}
+.quiz-feedback{margin-top:10px;font-size:13px;padding:10px 13px;border-radius:8px;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.ok{background:var(--green-light);color:var(--green)}
+.quiz-feedback.bad{background:var(--red-light);color:var(--red)}
+
+.quiz-submit-btn{
+  margin-top:12px;padding:10px 24px;
+  background:var(--gold);color:#0e0f0c;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:0.05em;border:none;border-radius:8px;cursor:pointer;
+  transition:transform 0.15s,background 0.15s;
+}
+.quiz-submit-btn:hover{background:var(--gold2);transform:translateY(-1px)}
+.quiz-submit-btn:disabled{opacity:0.4;cursor:default;transform:none}
+
+.quiz-score-panel{
+  display:none;background:var(--surface2);border:1px solid var(--border2);
+  border-radius:var(--radius);padding:20px;margin-top:16px;text-align:center;
+}
+.quiz-score-panel.show{display:block}
+.score-big{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--gold)}
+.score-label{font-size:13px;color:var(--text2);margin-top:4px}
+.score-badge{
+  display:inline-block;margin-top:10px;padding:6px 16px;
+  border-radius:20px;font-size:12px;font-weight:600;letter-spacing:0.05em;
+}
+.score-pass{background:var(--green-light);color:var(--green)}
+.score-fail{background:var(--red-light);color:var(--red)}
+
+/* ── WRITING TASK ── */
+.writing-task{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px;margin-top:16px;
+}
+.writing-prompt{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.writing-textarea{
+  width:100%;min-height:180px;background:var(--surface);
+  border:1px solid var(--border);border-radius:8px;
+  padding:14px;color:var(--text);font-family:'Outfit',sans-serif;
+  font-size:14px;line-height:1.7;resize:vertical;
+  transition:border-color 0.15s;
+}
+.writing-textarea:focus{outline:none;border-color:var(--gold)}
+.writing-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:8px;font-size:12px;color:var(--text3);
+}
+.wc-target{color:var(--text3)}
+.wc-count{transition:color 0.2s}
+.wc-good{color:var(--green)}
+.wc-low{color:var(--red)}
+.writing-tips{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.writing-tips h5{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.writing-tips li{font-size:12.5px;color:var(--text2);padding:4px 0;padding-left:14px;position:relative}
+.writing-tips li::before{content:'→';position:absolute;left:0;color:var(--gold)}
+.writing-check-btn{
+  margin-top:12px;padding:9px 20px;
+  border:1px solid var(--border2);background:transparent;
+  color:var(--text2);font-family:'Outfit',sans-serif;font-size:13px;
+  border-radius:8px;cursor:pointer;transition:all 0.15s;
+}
+.writing-check-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── LISTENING EXERCISE ── */
+.listening-block{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px;margin-top:16px;
+}
+.listen-player{
+  display:flex;align-items:center;gap:16px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:14px 18px;margin-bottom:16px;
+}
+.listen-play-btn{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--gold);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:transform 0.15s,background 0.15s;
+}
+.listen-play-btn:hover{background:var(--gold2);transform:scale(1.05)}
+.listen-play-icon{width:0;height:0;border-style:solid;border-width:7px 0 7px 12px;border-color:transparent transparent transparent #0e0f0c;margin-left:2px}
+.listen-play-icon.paused{border:none;width:12px;height:14px;
+  background:linear-gradient(to right,#0e0f0c 0,#0e0f0c 4px,transparent 4px,transparent 8px,#0e0f0c 8px,#0e0f0c 12px)}
+.listen-info{flex:1}
+.listen-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+.listen-desc{font-size:11px;color:var(--text3)}
+.listen-waveform{
+  height:32px;display:flex;align-items:center;gap:2px;margin-left:auto;
+}
+.listen-bar{width:3px;border-radius:2px;background:var(--surface3);transition:height 0.1s}
+.listen-script{
+  background:var(--surface);border-radius:8px;padding:14px;
+  font-size:13px;color:var(--text2);line-height:1.75;
+  border-left:2px solid var(--gold);display:none;
+}
+.listen-script.show{display:block}
+.show-script-btn{
+  font-size:12px;color:var(--gold);background:transparent;
+  border:1px solid var(--gold-dim);border-radius:6px;
+  padding:6px 14px;cursor:pointer;transition:background 0.15s;margin-bottom:12px;
+}
+.show-script-btn:hover{background:var(--gold-dim)}
+
+/* ── FLASHCARD ── */
+.flashcard-wrap{perspective:800px;margin-top:16px}
+.flashcard{
+  width:100%;min-height:140px;position:relative;
+  transform-style:preserve-3d;transition:transform 0.5s ease;cursor:pointer;
+}
+.flashcard.flipped{transform:rotateY(180deg)}
+.fc-front,.fc-back{
+  position:absolute;inset:0;backface-visibility:hidden;
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:var(--radius);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:24px;
+  text-align:center;min-height:140px;
+}
+.fc-back{transform:rotateY(180deg);background:var(--gold-dim);border-color:var(--gold)}
+.fc-front .word{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--text)}
+.fc-front .hint{font-size:11px;color:var(--text3);margin-top:8px}
+.fc-back .translation{font-size:18px;font-weight:500;color:var(--gold)}
+.fc-back .example{font-size:12px;color:var(--text2);margin-top:8px;font-style:italic}
+.fc-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px}
+.fc-btn{padding:8px 20px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-family:'Outfit',sans-serif;font-size:13px;border-radius:8px;cursor:pointer;transition:all 0.15s}
+.fc-btn:hover{border-color:var(--gold);color:var(--gold)}
+.fc-counter{font-size:12px;color:var(--text3)}
+
+/* ── GRAMMAR TABLE ── */
+.grammar-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
+.grammar-table th{
+  text-align:left;padding:9px 12px;
+  background:var(--surface3);color:var(--gold);
+  font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  border-bottom:1px solid var(--border);
+}
+.grammar-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.grammar-table tr:last-child td{border-bottom:none}
+.grammar-table tr:hover td{background:var(--surface2);color:var(--text)}
+.grammar-table .de{color:var(--text);font-weight:500}
+.grammar-table .highlight{color:var(--gold);font-weight:600}
+
+/* ── SPEAKING EXERCISE ── */
+.speaking-card{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px;margin-top:12px;
+}
+.speaking-topic{
+  font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;
+  color:var(--text);margin-bottom:8px;
+}
+.speaking-prompts{margin-top:12px}
+.speaking-prompts li{
+  font-size:13px;color:var(--text2);padding:6px 0;
+  padding-left:16px;position:relative;border-bottom:1px solid var(--border);
+}
+.speaking-prompts li:last-child{border-bottom:none}
+.speaking-prompts li::before{content:'•';position:absolute;left:0;color:var(--gold)}
+.speaking-timer-btn{
+  margin-top:14px;padding:10px 22px;
+  background:transparent;border:1px solid var(--gold);
+  color:var(--gold);font-family:'Outfit',sans-serif;
+  font-size:13px;font-weight:500;border-radius:8px;cursor:pointer;
+  transition:all 0.15s;display:flex;align-items:center;gap:8px;
+}
+.speaking-timer-btn:hover{background:var(--gold-dim)}
+.timer-display{font-size:14px;font-weight:600;color:var(--gold);display:none}
+
+/* ── CERTIFICATE ── */
+#cert-section{
+  padding:48px;display:flex;flex-direction:column;align-items:center;
+}
+.cert-locked{
+  text-align:center;padding:60px 40px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);max-width:520px;
+}
+.cert-locked .lock-icon{font-size:48px;margin-bottom:20px;opacity:0.4}
+.cert-locked h2{
+  font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;
+  color:var(--text);margin-bottom:10px;
+}
+.cert-locked p{font-size:14px;color:var(--text2);line-height:1.7}
+.cert-progress-bar{
+  width:100%;max-width:320px;height:6px;background:var(--surface3);
+  border-radius:3px;margin:16px auto 8px;overflow:hidden;
+}
+.cert-progress-fill{height:100%;background:var(--gold);border-radius:3px;transition:width 0.4s}
+.cert-progress-label{font-size:12px;color:var(--text3);text-align:center}
+
+.certificate{
+  display:none;width:100%;max-width:760px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:60px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.certificate.visible{display:block}
+.cert-corner{
+  position:absolute;width:100px;height:100px;
+  border-color:var(--gold);border-style:solid;opacity:0.4;
+}
+.cert-corner-tl{top:20px;left:20px;border-width:2px 0 0 2px;border-radius:4px 0 0 0}
+.cert-corner-tr{top:20px;right:20px;border-width:2px 2px 0 0;border-radius:0 4px 0 0}
+.cert-corner-bl{bottom:20px;left:20px;border-width:0 0 2px 2px;border-radius:0 0 0 4px}
+.cert-corner-br{bottom:20px;right:20px;border-width:0 2px 2px 0;border-radius:0 0 4px 0}
+.cert-emblem{font-size:56px;margin-bottom:16px}
+.cert-issued{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
+.cert-title{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--gold);line-height:1.1;margin-bottom:6px}
+.cert-subtitle{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:var(--text2);margin-bottom:24px}
+.cert-name-line{
+  font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;
+  color:var(--text);border-bottom:1px solid var(--gold);
+  padding-bottom:12px;margin:0 auto 20px;max-width:400px;
+}
+.cert-body{font-size:14px;color:var(--text2);line-height:1.8;max-width:500px;margin:0 auto 24px}
+.cert-score{
+  display:inline-block;
+  font-family:'Cormorant Garamond',serif;font-size:28px;
+  color:var(--gold);border:1px solid rgba(201,168,76,0.3);
+  padding:12px 30px;border-radius:8px;margin-bottom:24px;
+}
+.cert-footer{
+  display:flex;justify-content:space-around;
+  padding-top:24px;border-top:1px solid var(--border);
+  font-size:12px;color:var(--text3);
+}
+.cert-download-btn{
+  margin-top:24px;padding:12px 32px;
+  background:var(--gold);color:#0e0f0c;
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;
+  border:none;border-radius:8px;cursor:pointer;
+  transition:transform 0.15s,background 0.15s;
+}
+.cert-download-btn:hover{background:var(--gold2);transform:translateY(-2px)}
+.cert-name-input{
+  background:transparent;border:none;border-bottom:1px dashed var(--gold);
+  color:var(--text);font-family:'Cormorant Garamond',serif;font-size:32px;
+  text-align:center;width:400px;max-width:100%;
+  padding-bottom:10px;margin-bottom:20px;
+}
+.cert-name-input:focus{outline:none;border-bottom-color:var(--gold2)}
+
+/* ── FOOTER STATS ── */
+.stats-bar{
+  position:fixed;bottom:0;right:0;left:260px;
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:10px 48px;display:flex;align-items:center;gap:32px;
+  font-size:12px;z-index:50;
+}
+.stat-item{display:flex;align-items:center;gap:8px;color:var(--text3)}
+.stat-item strong{color:var(--text);font-weight:600}
+.stat-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.stat-dot.gold{background:var(--gold)}
+.stat-dot.green{background:var(--green)}
+.stat-dot.blue{background:var(--blue)}
+
+/* ── DASHBOARD ── */
+.dash-welcome{
+  font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;
+  color:var(--text);margin-bottom:8px;
+}
+.dash-welcome em{color:var(--gold);font-style:italic}
+.dash-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:28px 0}
+.dash-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px 20px;
+}
+.dash-card-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+.dash-card-value{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--gold)}
+.dash-card-sub{font-size:12px;color:var(--text2);margin-top:4px}
+.dash-modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:20px}
+.dash-module-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px 18px;cursor:pointer;transition:border-color 0.2s,transform 0.15s;
+}
+.dash-module-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.dash-module-icon{font-size:22px;margin-bottom:8px}
+.dash-module-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+.dash-module-prog{height:3px;background:var(--surface3);border-radius:2px;margin-top:10px}
+.dash-module-fill{height:100%;background:var(--gold);border-radius:2px;transition:width 0.5s}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--border2)}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:80px;right:24px;z-index:999;
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:10px;padding:12px 18px;font-size:13px;color:var(--text);
+  transform:translateY(20px);opacity:0;transition:all 0.3s;pointer-events:none;max-width:280px;
+}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{border-left:3px solid var(--green)}
+.toast.info{border-left:3px solid var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  #sidebar{width:100%;height:56px;bottom:auto;flex-direction:row;overflow-x:auto}
+  #content{margin-left:0;margin-top:56px}
+  .section{padding:24px 16px 80px}
+  .page-header{padding:28px 16px 20px}
+  .stats-bar{left:0;padding:8px 16px;gap:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-de">B2</div>
+  <div class="splash-sub">Deutsch · Complete Study Programme</div>
+  <button class="splash-btn" onclick="startApp()">Begin Learning</button>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <span>Deutsch</span>
+    <sub>B2 Study Programme</sub>
+  </div>
+  <div class="sidebar-prog">
+    <div class="prog-ring-wrap">
+      <svg width="46" height="46" viewBox="0 0 46 46">
+        <circle class="prog-ring-bg" cx="23" cy="23" r="20"/>
+        <circle class="prog-ring-fill" id="ringFill" cx="23" cy="23" r="20"/>
+      </svg>
+      <div class="prog-ring-pct" id="ringPct">0%</div>
+    </div>
+    <div class="prog-text">
+      <strong id="sidebarProgText">0 / 0 complete</strong>
+      <span id="sidebarProgSub">Keep going!</span>
+    </div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <div class="nav-item active" data-section="dashboard"><span class="nav-icon">⊞</span>Dashboard</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Grammar</div>
+    <div class="nav-item" data-section="g1"><span class="nav-icon">I</span>Konjunktiv II<div class="nav-check" id="nc-g1"></div></div>
+    <div class="nav-item" data-section="g2"><span class="nav-icon">II</span>Passiv<div class="nav-check" id="nc-g2"></div></div>
+    <div class="nav-item" data-section="g3"><span class="nav-icon">III</span>Relativsätze<div class="nav-check" id="nc-g3"></div></div>
+    <div class="nav-item" data-section="g4"><span class="nav-icon">IV</span>Konjunktoren<div class="nav-check" id="nc-g4"></div></div>
+    <div class="nav-item" data-section="g5"><span class="nav-icon">V</span>Indirekte Rede<div class="nav-check" id="nc-g5"></div></div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Vocabulary</div>
+    <div class="nav-item" data-section="v1"><span class="nav-icon">●</span>Arbeit & Beruf<div class="nav-check" id="nc-v1"></div></div>
+    <div class="nav-item" data-section="v2"><span class="nav-icon">●</span>Gesellschaft<div class="nav-check" id="nc-v2"></div></div>
+    <div class="nav-item" data-section="v3"><span class="nav-icon">●</span>Flashcards<div class="nav-check" id="nc-v3"></div></div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Skills</div>
+    <div class="nav-item" data-section="reading"><span class="nav-icon">📖</span>Reading<div class="nav-check" id="nc-reading"></div></div>
+    <div class="nav-item" data-section="listening"><span class="nav-icon">🎧</span>Listening<div class="nav-check" id="nc-listening"></div></div>
+    <div class="nav-item" data-section="writing"><span class="nav-icon">✍</span>Writing<div class="nav-check" id="nc-writing"></div></div>
+    <div class="nav-item" data-section="speaking"><span class="nav-icon">🗣</span>Speaking<div class="nav-check" id="nc-speaking"></div></div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Assessment</div>
+    <div class="nav-item" data-section="test1"><span class="nav-icon">📝</span>Grammar Test<div class="nav-check" id="nc-test1"></div></div>
+    <div class="nav-item" data-section="test2"><span class="nav-icon">📝</span>Reading Test<div class="nav-check" id="nc-test2"></div></div>
+    <div class="nav-item" data-section="test3"><span class="nav-icon">📝</span>Full Mock Exam<div class="nav-check" id="nc-test3"></div></div>
+    <div class="nav-item" data-section="cert"><span class="nav-icon">🎓</span>Certificate</div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div id="content">
+
+<!-- ═══════════════════════════════════════
+     DASHBOARD
+═══════════════════════════════════════ -->
+<div class="section active" id="sec-dashboard">
+  <div class="page-header">
+    <div class="page-header-label">Goethe-Zertifikat B2 · CEFR Level</div>
+    <h1>Willkommen zurück,<br><em>let's continue.</em></h1>
+    <p>Your complete self-study programme for German B2. Work through each module, pass the tests, and earn your certificate.</p>
+  </div>
+  <div class="section" id="sec-dashboard-inner" style="display:block;padding-top:32px">
+    <div class="dash-cards">
+      <div class="dash-card"><div class="dash-card-label">Modules</div><div class="dash-card-value">14</div><div class="dash-card-sub">Grammar, Vocab, Skills, Tests</div></div>
+      <div class="dash-card"><div class="dash-card-label">Completed</div><div class="dash-card-value" id="dashDone">0</div><div class="dash-card-sub">units finished</div></div>
+      <div class="dash-card"><div class="dash-card-label">Test Score Avg</div><div class="dash-card-value" id="dashAvg">—</div><div class="dash-card-sub">across all tests taken</div></div>
+      <div class="dash-card"><div class="dash-card-label">Pass Mark</div><div class="dash-card-value">60%</div><div class="dash-card-sub">required for certificate</div></div>
+    </div>
+    <h3 style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:14px">Modules</h3>
+    <div class="dash-modules">
+      <div class="dash-module-card" onclick="navigate('g1')"><div class="dash-module-icon">📐</div><div class="dash-module-name">Grammar — Konjunktiv II</div><div class="dash-module-prog"><div class="dash-module-fill dm-g1" style="width:0%"></div></div></div>
+      <div class="dash-module-card" onclick="navigate('g2')"><div class="dash-module-icon">🔄</div><div class="dash-module-name">Grammar — Passiv</div><div class="dash-module-prog"><div class="dash-module-fill dm-g2" style="width:0%"></div></div></div>
+      <div class="dash-module-card" onclick="navigate('g3')"><div class="dash-module-icon">🔗</div><div class="dash-module-name">Grammar — Relativsätze</div><div class="dash-module-prog"><div class="dash-module-fill dm-g3" style="width:0%"></div></div></div>
+      <div class="dash-module-card" onclick="navigate('g4')"><div class="dash-module-icon">🔀</div><div class="dash-module-name">Konjunktoren & Konnektoren</div><div class="dash-module-prog"><div class="dash-module-fill dm-g4" style="width:0%"></div></div></div>
+      <div class="dash-module-card" onclick="navigate('g5')"><div class="dash-module-icon">💬</div><div class="dash-module-name">Indirekte Rede</div><div class="dash-module-prog"><div class="dash-module-fill dm-g5" style="width:0%"></div></div></div>
+      <div class="dash-module-card" onclick="navigate('v1')"><div class="dash-module-icon">💼</div><div class="dash-module-name">Vocabulary — Arbeit & Beruf</div><div class="dash-module-prog"><div class="dash-module-fill dm-v1" style="width:0%"></div></div></div>
+      <div class="dash-module-card" onclick="navigate('reading')"><div class="dash-module-icon">📖</div><div class="dash-module-name">Reading Comprehension</div><div class="dash-module-prog"><div class="dash-module-fill dm-reading" style="width:0%"></div></div></div>
+      <div class="dash-module-card" onclick="navigate('listening')"><div class="dash-module-icon">🎧</div><div class="dash-module-name">Listening Exercises</div><div class="dash-module-prog"><div class="dash-module-fill dm-listening" style="width:0%"></div></div></div>
+      <div class="dash-module-card" onclick="navigate('writing')"><div class="dash-module-icon">✍</div><div class="dash-module-name">Writing Tasks</div><div class="dash-module-prog"><div class="dash-module-fill dm-writing" style="width:0%"></div></div></div>
+      <div class="dash-module-card" onclick="navigate('test1')"><div class="dash-module-icon">🧪</div><div class="dash-module-name">Grammar Test</div><div class="dash-module-prog"><div class="dash-module-fill dm-test1" style="width:0%"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     G1 — KONJUNKTIV II
+═══════════════════════════════════════ -->
+<div class="section" id="sec-g1">
+  <div class="page-header">
+    <div class="page-header-label">Grammar · Module 1</div>
+    <h1>Konjunktiv II<br><em>Subjunctive Mood</em></h1>
+    <p>Express hypotheticals, wishes, polite requests, and unreal conditions with confidence.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+
+    <div class="unit-card" id="uc-g1-1">
+      <div class="unit-head" onclick="toggleCard('g1-1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Formation: würde + Infinitiv</h3><span>The most common way to form Konjunktiv II</span></div>
+        <span class="unit-tag tag-grammar">Grammar</span>
+        <button class="unit-complete-btn" id="ucb-g1-1" onclick="markUnit('g1-1',event)" title="Mark complete"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g1-1">
+        <div class="content-block">
+          <h4>Conjugation Table</h4>
+          <table class="grammar-table">
+            <tr><th>Person</th><th>würde</th><th>Example</th><th>Meaning</th></tr>
+            <tr><td>ich</td><td class="de">würde</td><td class="de">ich würde gehen</td><td>I would go</td></tr>
+            <tr><td>du</td><td class="de">würdest</td><td class="de">du würdest gehen</td><td>you would go</td></tr>
+            <tr><td>er/sie/es</td><td class="de">würde</td><td class="de">er würde gehen</td><td>he would go</td></tr>
+            <tr><td>wir</td><td class="de">würden</td><td class="de">wir würden gehen</td><td>we would go</td></tr>
+            <tr><td>ihr</td><td class="de">würdet</td><td class="de">ihr würdet gehen</td><td>you (pl) would go</td></tr>
+            <tr><td>sie/Sie</td><td class="de">würden</td><td class="de">sie würden gehen</td><td>they would go</td></tr>
+          </table>
+        </div>
+        <div class="content-block">
+          <h4>Key Irregular Forms (preferred over würde)</h4>
+          <table class="grammar-table">
+            <tr><th>Infinitive</th><th>Konjunktiv II (er/sie)</th><th>English</th></tr>
+            <tr><td class="de">sein</td><td class="de highlight">wäre</td><td>would be</td></tr>
+            <tr><td class="de">haben</td><td class="de highlight">hätte</td><td>would have</td></tr>
+            <tr><td class="de">können</td><td class="de highlight">könnte</td><td>could</td></tr>
+            <tr><td class="de">müssen</td><td class="de highlight">müsste</td><td>would have to</td></tr>
+            <tr><td class="de">dürfen</td><td class="de highlight">dürfte</td><td>would be allowed</td></tr>
+            <tr><td class="de">sollen</td><td class="de highlight">sollte</td><td>should</td></tr>
+            <tr><td class="de">wollen</td><td class="de highlight">wollte</td><td>would want</td></tr>
+            <tr><td class="de">wissen</td><td class="de highlight">wüsste</td><td>would know</td></tr>
+            <tr><td class="de">kommen</td><td class="de highlight">käme</td><td>would come</td></tr>
+            <tr><td class="de">gehen</td><td class="de highlight">ginge</td><td>would go</td></tr>
+          </table>
+        </div>
+        <div class="example-box">
+          <div class="ex-label">Live Examples</div>
+          <p class="de">Wenn ich Zeit hätte, würde ich mehr lesen.</p>
+          <p class="en">If I had time, I would read more.</p>
+          <p class="de" style="margin-top:8px">An deiner Stelle wäre ich vorsichtiger.</p>
+          <p class="en">In your position, I would be more careful.</p>
+          <p class="de" style="margin-top:8px">Könnten Sie mir bitte helfen?</p>
+          <p class="en">Could you please help me?</p>
+        </div>
+        <div class="content-block">
+          <h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g1-1"><span class="lesson-text">Understand when to use <em>würde + Infinitiv</em> vs irregular form</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g1-1"><span class="lesson-text">Memorise the 10 most important irregular Konjunktiv II forms</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g1-1"><span class="lesson-text">Practice polite requests: <em>Könnten Sie…? / Dürfte ich…? / Ich hätte gern…</em></span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g1-1"><span class="lesson-text">Write 5 sentences about what you would do differently in life</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit-card" id="uc-g1-2">
+      <div class="unit-head" onclick="toggleCard('g1-2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Conditional Sentences (Konditionalsätze)</h3><span>Real and unreal conditions with wenn</span></div>
+        <span class="unit-tag tag-grammar">Grammar</span>
+        <button class="unit-complete-btn" id="ucb-g1-2" onclick="markUnit('g1-2',event)" title="Mark complete"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g1-2">
+        <div class="content-block">
+          <h4>Conditional Types</h4>
+          <table class="grammar-table">
+            <tr><th>Type</th><th>Structure</th><th>Example</th></tr>
+            <tr><td>Realis (possible)</td><td class="de">wenn…Indikativ, Indikativ</td><td class="de">Wenn es regnet, bleibe ich zu Hause.</td></tr>
+            <tr><td>Irrealis present</td><td class="de">wenn…Konj.II, Konj.II</td><td class="de">Wenn ich reich wäre, würde ich reisen.</td></tr>
+            <tr><td>Irrealis past</td><td class="de">wenn…hätte/wäre+Part.II</td><td class="de">Wenn ich das gewusst hätte, wäre ich geblieben.</td></tr>
+          </table>
+        </div>
+        <div class="example-box">
+          <div class="ex-label">Past Irrealis</div>
+          <p class="de">Wenn sie früher angefangen hätte, hätte sie die Deadline geschafft.</p>
+          <p class="en">If she had started earlier, she would have met the deadline.</p>
+        </div>
+        <div class="content-block">
+          <h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g1-2"><span class="lesson-text">Distinguish Realis from Irrealis conditionals</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g1-2"><span class="lesson-text">Master past irrealis: <em>hätte/wäre + Partizip II</em></span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g1-2"><span class="lesson-text">Practice with 10 wenn-dann sentence transformations</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit-card" id="uc-g1-3">
+      <div class="unit-head" onclick="toggleCard('g1-3')">
+        <div class="unit-number">3</div>
+        <div class="unit-info"><h3>Mini Quiz — Konjunktiv II</h3><span>Test your knowledge</span></div>
+        <span class="unit-tag tag-test">Quiz</span>
+        <button class="unit-complete-btn" id="ucb-g1-3" onclick="markUnit('g1-3',event)" title="Mark complete"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g1-3">
+        <div id="quiz-g1"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     G2 — PASSIV
+═══════════════════════════════════════ -->
+<div class="section" id="sec-g2">
+  <div class="page-header">
+    <div class="page-header-label">Grammar · Module 2</div>
+    <h1>Das Passiv<br><em>Passive Voice</em></h1>
+    <p>Learn to use Vorgangspassiv, Zustandspassiv, Passiv with modals, and passive alternatives.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+
+    <div class="unit-card" id="uc-g2-1">
+      <div class="unit-head" onclick="toggleCard('g2-1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Vorgangspassiv — All Tenses</h3><span>werden + Partizip II</span></div>
+        <span class="unit-tag tag-grammar">Grammar</span>
+        <button class="unit-complete-btn" id="ucb-g2-1" onclick="markUnit('g2-1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g2-1">
+        <div class="content-block">
+          <h4>Passive Tense Forms</h4>
+          <table class="grammar-table">
+            <tr><th>Tense</th><th>Active</th><th>Passive</th></tr>
+            <tr><td>Präsens</td><td class="de">Man baut die Brücke.</td><td class="de highlight">Die Brücke wird gebaut.</td></tr>
+            <tr><td>Präteritum</td><td class="de">Man baute die Brücke.</td><td class="de highlight">Die Brücke wurde gebaut.</td></tr>
+            <tr><td>Perfekt</td><td class="de">Man hat die Brücke gebaut.</td><td class="de highlight">Die Brücke ist gebaut worden.</td></tr>
+            <tr><td>Futur I</td><td class="de">Man wird die Brücke bauen.</td><td class="de highlight">Die Brücke wird gebaut werden.</td></tr>
+            <tr><td>+ Modalverb</td><td class="de">Man muss es lösen.</td><td class="de highlight">Es muss gelöst werden.</td></tr>
+          </table>
+        </div>
+        <div class="content-block">
+          <h4>Zustandspassiv vs. Vorgangspassiv</h4>
+          <div class="example-box">
+            <div class="ex-label">Comparison</div>
+            <p class="de">Die Tür <span style="color:var(--gold)">wird geöffnet</span>. (Vorgangspassiv — action happening)</p>
+            <p class="en">The door is being opened.</p>
+            <p class="de" style="margin-top:8px">Die Tür <span style="color:var(--gold)">ist geöffnet</span>. (Zustandspassiv — resulting state)</p>
+            <p class="en">The door is open (has been opened).</p>
+          </div>
+        </div>
+        <div class="content-block"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g2-1"><span class="lesson-text">Form passive in all tenses — practise 15 sentences</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g2-1"><span class="lesson-text">Distinguish Zustands- from Vorgangspassiv in a newspaper article</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g2-1"><span class="lesson-text">Use passive alternatives: <em>man / sich lassen / sein + zu</em></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit-card" id="uc-g2-2">
+      <div class="unit-head" onclick="toggleCard('g2-2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Passive Alternatives</h3><span>man, lassen, sein + zu</span></div>
+        <span class="unit-tag tag-grammar">Grammar</span>
+        <button class="unit-complete-btn" id="ucb-g2-2" onclick="markUnit('g2-2',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g2-2">
+        <div class="content-block">
+          <table class="grammar-table">
+            <tr><th>Structure</th><th>Example</th><th>Notes</th></tr>
+            <tr><td class="de">man + Aktiv</td><td class="de">Man sagt, dass…</td><td>Informal, impersonal</td></tr>
+            <tr><td class="de">sich lassen + Inf.</td><td class="de">Das lässt sich erklären.</td><td>= kann erklärt werden</td></tr>
+            <tr><td class="de">sein + zu + Inf.</td><td class="de">Das ist zu beachten.</td><td>= must/should be done</td></tr>
+            <tr><td class="de">-bar / -lich suffix</td><td class="de">Das ist erklärbar.</td><td>Adjectival passive</td></tr>
+          </table>
+        </div>
+        <div class="content-block"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g2-2"><span class="lesson-text">Transform 8 passive sentences into lassen + sich</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g2-2"><span class="lesson-text">Find 5 sein+zu+Infinitiv patterns in a German instruction manual</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit-card" id="uc-g2-3">
+      <div class="unit-head" onclick="toggleCard('g2-3')">
+        <div class="unit-number">3</div>
+        <div class="unit-info"><h3>Quiz — Passiv</h3><span>Test your Passiv knowledge</span></div>
+        <span class="unit-tag tag-test">Quiz</span>
+        <button class="unit-complete-btn" id="ucb-g2-3" onclick="markUnit('g2-3',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g2-3">
+        <div id="quiz-g2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     G3 — RELATIVSÄTZE
+═══════════════════════════════════════ -->
+<div class="section" id="sec-g3">
+  <div class="page-header">
+    <div class="page-header-label">Grammar · Module 3</div>
+    <h1>Relativsätze<br><em>Relative Clauses</em></h1>
+  </div>
+  <div style="padding:32px 48px 80px">
+    <div class="unit-card" id="uc-g3-1">
+      <div class="unit-head" onclick="toggleCard('g3-1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Relative Pronouns — All Cases</h3><span>der/die/das across Nom, Akk, Dat, Gen</span></div>
+        <span class="unit-tag tag-grammar">Grammar</span>
+        <button class="unit-complete-btn" id="ucb-g3-1" onclick="markUnit('g3-1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g3-1">
+        <div class="content-block">
+          <table class="grammar-table">
+            <tr><th>Case</th><th>Maskulin</th><th>Feminin</th><th>Neutrum</th><th>Plural</th></tr>
+            <tr><td>Nominativ</td><td class="de highlight">der</td><td class="de highlight">die</td><td class="de highlight">das</td><td class="de highlight">die</td></tr>
+            <tr><td>Akkusativ</td><td class="de highlight">den</td><td class="de highlight">die</td><td class="de highlight">das</td><td class="de highlight">die</td></tr>
+            <tr><td>Dativ</td><td class="de highlight">dem</td><td class="de highlight">der</td><td class="de highlight">dem</td><td class="de highlight">denen</td></tr>
+            <tr><td>Genitiv</td><td class="de highlight">dessen</td><td class="de highlight">deren</td><td class="de highlight">dessen</td><td class="de highlight">deren</td></tr>
+          </table>
+        </div>
+        <div class="example-box">
+          <div class="ex-label">Examples across all cases</div>
+          <p class="de">NOM: Das ist der Mann, <span style="color:var(--gold)">der</span> dort steht. (the man who stands there)</p>
+          <p class="de" style="margin-top:6px">AKK: Der Film, <span style="color:var(--gold)">den</span> ich gesehen habe, war toll.</p>
+          <p class="de" style="margin-top:6px">DAT: Das Haus, <span style="color:var(--gold)">in dem</span> ich wohne, ist alt.</p>
+          <p class="de" style="margin-top:6px">GEN: Ein Autor, <span style="color:var(--gold)">dessen</span> Bücher weltbekannt sind.</p>
+        </div>
+        <div class="content-block"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g3-1"><span class="lesson-text">Memorise the full relative pronoun table</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g3-1"><span class="lesson-text">Practice relative clauses with prepositions: <em>für den, mit der, bei dem</em></span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g3-1"><span class="lesson-text">Use <em>was</em> after: alles, etwas, nichts, das (referring to sentence)</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g3-1"><span class="lesson-text">Write 8 combined sentences using relative clauses</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="unit-card" id="uc-g3-2">
+      <div class="unit-head" onclick="toggleCard('g3-2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Quiz — Relativsätze</h3></div>
+        <span class="unit-tag tag-test">Quiz</span>
+        <button class="unit-complete-btn" id="ucb-g3-2" onclick="markUnit('g3-2',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g3-2"><div id="quiz-g3"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     G4 — KONJUNKTOREN
+═══════════════════════════════════════ -->
+<div class="section" id="sec-g4">
+  <div class="page-header">
+    <div class="page-header-label">Grammar · Module 4</div>
+    <h1>Konjunktoren &amp; Konnektoren<br><em>Connectors</em></h1>
+  </div>
+  <div style="padding:32px 48px 80px">
+    <div class="unit-card" id="uc-g4-1">
+      <div class="unit-head" onclick="toggleCard('g4-1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Subordinating Conjunctions by Meaning</h3></div>
+        <span class="unit-tag tag-grammar">Grammar</span>
+        <button class="unit-complete-btn" id="ucb-g4-1" onclick="markUnit('g4-1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g4-1">
+        <div class="content-block">
+          <table class="grammar-table">
+            <tr><th>Category</th><th>Conjunctions</th><th>Example</th></tr>
+            <tr><td>Causal</td><td class="de">weil, da, denn*</td><td class="de">Er blieb, weil er müde war.</td></tr>
+            <tr><td>Temporal</td><td class="de">als, wenn, während, nachdem, bevor, seitdem, sobald</td><td class="de">Nachdem er gegessen hatte, schlief er.</td></tr>
+            <tr><td>Concessive</td><td class="de">obwohl, obgleich, auch wenn</td><td class="de">Obwohl es regnete, gingen wir.</td></tr>
+            <tr><td>Conditional</td><td class="de">wenn, falls, sofern</td><td class="de">Falls du Zeit hast, ruf an.</td></tr>
+            <tr><td>Final</td><td class="de">damit, um…zu</td><td class="de">Sie lernt, damit sie besteht.</td></tr>
+            <tr><td>Consecutive</td><td class="de">sodass, so…dass</td><td class="de">Er sprach so laut, dass alle ihn hörten.</td></tr>
+            <tr><td>Adversative</td><td class="de">während, wohingegen</td><td class="de">Er kocht, während sie arbeitet.</td></tr>
+          </table>
+          <p style="font-size:11px;color:var(--text3);margin-top:8px">*denn = coordinating (Hauptsatz follows), no verb-final rule</p>
+        </div>
+        <div class="content-block">
+          <h4>Two-part connectors (Zweiteilige Konnektoren)</h4>
+          <table class="grammar-table">
+            <tr><th>Connector</th><th>Meaning</th><th>Example</th></tr>
+            <tr><td class="de highlight">sowohl … als auch</td><td>both … and</td><td class="de">sowohl klug als auch fleißig</td></tr>
+            <tr><td class="de highlight">entweder … oder</td><td>either … or</td><td class="de">entweder heute oder morgen</td></tr>
+            <tr><td class="de highlight">weder … noch</td><td>neither … nor</td><td class="de">weder Zeit noch Geld</td></tr>
+            <tr><td class="de highlight">zwar … aber</td><td>it's true … but</td><td class="de">zwar teuer, aber gut</td></tr>
+            <tr><td class="de highlight">nicht nur … sondern auch</td><td>not only … but also</td><td class="de">nicht nur schön, sondern auch klug</td></tr>
+          </table>
+        </div>
+        <div class="content-block"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g4-1"><span class="lesson-text">Memorise als vs. wenn (als = single past event; wenn = repeated/present/future)</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g4-1"><span class="lesson-text">Practise two-part connectors in 10 original sentences</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g4-1"><span class="lesson-text">Write a paragraph with at least 5 different conjunctions</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="unit-card" id="uc-g4-2">
+      <div class="unit-head" onclick="toggleCard('g4-2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Quiz — Konjunktoren</h3></div>
+        <span class="unit-tag tag-test">Quiz</span>
+        <button class="unit-complete-btn" id="ucb-g4-2" onclick="markUnit('g4-2',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g4-2"><div id="quiz-g4"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     G5 — INDIREKTE REDE
+═══════════════════════════════════════ -->
+<div class="section" id="sec-g5">
+  <div class="page-header">
+    <div class="page-header-label">Grammar · Module 5</div>
+    <h1>Indirekte Rede<br><em>Reported Speech</em></h1>
+  </div>
+  <div style="padding:32px 48px 80px">
+    <div class="unit-card" id="uc-g5-1">
+      <div class="unit-head" onclick="toggleCard('g5-1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Konjunktiv I Formation</h3></div>
+        <span class="unit-tag tag-grammar">Grammar</span>
+        <button class="unit-complete-btn" id="ucb-g5-1" onclick="markUnit('g5-1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g5-1">
+        <div class="content-block">
+          <table class="grammar-table">
+            <tr><th>Person</th><th>sein</th><th>haben</th><th>kommen</th></tr>
+            <tr><td>ich</td><td class="de">sei</td><td class="de">habe</td><td class="de">komme</td></tr>
+            <tr><td>du</td><td class="de">sei(e)st</td><td class="de">habest</td><td class="de">kommest</td></tr>
+            <tr><td>er/sie/es</td><td class="de highlight">sei</td><td class="de highlight">habe</td><td class="de highlight">komme</td></tr>
+            <tr><td>wir</td><td class="de">seien</td><td class="de">haben</td><td class="de">kommen</td></tr>
+            <tr><td>sie/Sie</td><td class="de">seien</td><td class="de">haben</td><td class="de">kommen</td></tr>
+          </table>
+          <p style="font-size:12px;color:var(--text3);margin-top:8px">When Konj. I = Indikativ (e.g. wir kommen = wir kommen), use Konjunktiv II instead.</p>
+        </div>
+        <div class="example-box">
+          <div class="ex-label">Direct → Indirect</div>
+          <p class="de">Direct: „Ich bin müde."</p>
+          <p class="de" style="margin-top:4px">Indirect: Er sagte, er <span style="color:var(--gold)">sei</span> müde.</p>
+          <p class="de" style="margin-top:8px">Direct: „Wir haben das Projekt abgeschlossen."</p>
+          <p class="de" style="margin-top:4px">Indirect: Sie erklärten, sie <span style="color:var(--gold)">hätten</span> das Projekt abgeschlossen.</p>
+        </div>
+        <div class="content-block"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g5-1"><span class="lesson-text">Learn Konjunktiv I forms for the 10 most common verbs</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g5-1"><span class="lesson-text">Convert a 6-line dialogue into reported speech</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="g5-1"><span class="lesson-text">Find 3 Konjunktiv I examples in a German news article</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="unit-card" id="uc-g5-2">
+      <div class="unit-head" onclick="toggleCard('g5-2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Quiz — Indirekte Rede</h3></div>
+        <span class="unit-tag tag-test">Quiz</span>
+        <button class="unit-complete-btn" id="ucb-g5-2" onclick="markUnit('g5-2',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-g5-2"><div id="quiz-g5"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     V1 — VOCABULARY: ARBEIT
+═══════════════════════════════════════ -->
+<div class="section" id="sec-v1">
+  <div class="page-header">
+    <div class="page-header-label">Vocabulary · Module 1</div>
+    <h1>Arbeit &amp; Beruf<br><em>Work &amp; Career</em></h1>
+  </div>
+  <div style="padding:32px 48px 80px">
+    <div class="unit-card" id="uc-v1-1">
+      <div class="unit-head" onclick="toggleCard('v1-1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Job Application Vocabulary</h3><span>Bewerbung, Lebenslauf, Vorstellungsgespräch</span></div>
+        <span class="unit-tag tag-vocab">Vocab</span>
+        <button class="unit-complete-btn" id="ucb-v1-1" onclick="markUnit('v1-1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-v1-1">
+        <div class="content-block">
+          <table class="grammar-table">
+            <tr><th>Deutsch</th><th>English</th><th>Example</th></tr>
+            <tr><td class="de">die Bewerbung</td><td>application</td><td class="de">eine Bewerbung einreichen</td></tr>
+            <tr><td class="de">der Lebenslauf (CV)</td><td>CV / résumé</td><td class="de">einen tabellarischen Lebenslauf erstellen</td></tr>
+            <tr><td class="de">das Anschreiben</td><td>cover letter</td><td class="de">ein überzeugendes Anschreiben verfassen</td></tr>
+            <tr><td class="de">das Vorstellungsgespräch</td><td>job interview</td><td class="de">ein Vorstellungsgespräch führen</td></tr>
+            <tr><td class="de">eingestellt werden</td><td>to be hired</td><td class="de">Ich wurde sofort eingestellt.</td></tr>
+            <tr><td class="de">die Stellenausschreibung</td><td>job posting</td><td class="de">auf eine Stellenausschreibung reagieren</td></tr>
+            <tr><td class="de">die Probezeit</td><td>probationary period</td><td class="de">die Probezeit erfolgreich bestehen</td></tr>
+            <tr><td class="de">das Gehalt / der Lohn</td><td>salary / wage</td><td class="de">ein attraktives Gehalt verhandeln</td></tr>
+            <tr><td class="de">kündigen</td><td>to resign / give notice</td><td class="de">Er hat seine Stelle gekündigt.</td></tr>
+            <tr><td class="de">entlassen werden</td><td>to be dismissed</td><td class="de">Er wurde wegen Umstrukturierung entlassen.</td></tr>
+            <tr><td class="de">die Weiterbildung</td><td>professional development</td><td class="de">an einer Weiterbildung teilnehmen</td></tr>
+            <tr><td class="de">eigenverantwortlich</td><td>independently / self-directed</td><td class="de">eigenverantwortlich arbeiten</td></tr>
+          </table>
+        </div>
+        <div class="content-block"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="v1-1"><span class="lesson-text">Memorise all 12 terms and their collocations</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="v1-1"><span class="lesson-text">Write a short cover letter paragraph using 5 of these terms</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="v1-1"><span class="lesson-text">Practice saying each term aloud with correct stress</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="unit-card" id="uc-v1-2">
+      <div class="unit-head" onclick="toggleCard('v1-2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Quiz — Arbeit & Beruf</h3></div>
+        <span class="unit-tag tag-test">Quiz</span>
+        <button class="unit-complete-btn" id="ucb-v1-2" onclick="markUnit('v1-2',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-v1-2"><div id="quiz-v1"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     V2 — VOCABULARY: GESELLSCHAFT
+═══════════════════════════════════════ -->
+<div class="section" id="sec-v2">
+  <div class="page-header">
+    <div class="page-header-label">Vocabulary · Module 2</div>
+    <h1>Gesellschaft &amp; Politik<br><em>Society &amp; Politics</em></h1>
+  </div>
+  <div style="padding:32px 48px 80px">
+    <div class="unit-card" id="uc-v2-1">
+      <div class="unit-head" onclick="toggleCard('v2-1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Society, Environment, Politics</h3></div>
+        <span class="unit-tag tag-vocab">Vocab</span>
+        <button class="unit-complete-btn" id="ucb-v2-1" onclick="markUnit('v2-1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-v2-1">
+        <div class="content-block">
+          <table class="grammar-table">
+            <tr><th>Deutsch</th><th>English</th><th>Context</th></tr>
+            <tr><td class="de">die Nachhaltigkeit</td><td>sustainability</td><td>Umwelt</td></tr>
+            <tr><td class="de">der Klimawandel</td><td>climate change</td><td>Umwelt</td></tr>
+            <tr><td class="de">erneuerbare Energien</td><td>renewable energies</td><td>Umwelt</td></tr>
+            <tr><td class="de">die Ungleichheit</td><td>inequality</td><td>Gesellschaft</td></tr>
+            <tr><td class="de">die Integration</td><td>integration</td><td>Gesellschaft</td></tr>
+            <tr><td class="de">der Bundestag</td><td>German parliament</td><td>Politik</td></tr>
+            <tr><td class="de">die Koalition</td><td>coalition government</td><td>Politik</td></tr>
+            <tr><td class="de">das Grundgesetz</td><td>Basic Law (constitution)</td><td>Politik</td></tr>
+            <tr><td class="de">die Inflation</td><td>inflation</td><td>Wirtschaft</td></tr>
+            <tr><td class="de">der Mindestlohn</td><td>minimum wage</td><td>Wirtschaft</td></tr>
+            <tr><td class="de">die Globalisierung</td><td>globalisation</td><td>Wirtschaft</td></tr>
+            <tr><td class="de">die Digitalisierung</td><td>digitalisation</td><td>Technologie</td></tr>
+          </table>
+        </div>
+        <div class="content-block"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="v2-1"><span class="lesson-text">Group words by theme: environment, politics, economy</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="v2-1"><span class="lesson-text">Write a 100-word opinion statement using 6 of these terms</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="v2-1"><span class="lesson-text">Read a Spiegel Online article and underline these terms in context</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     V3 — FLASHCARDS
+═══════════════════════════════════════ -->
+<div class="section" id="sec-v3">
+  <div class="page-header">
+    <div class="page-header-label">Vocabulary · Flashcard Trainer</div>
+    <h1>Vokabel-Training<br><em>Flashcard Trainer</em></h1>
+    <p>Click the card to reveal the translation. Use the buttons to move forward and back.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+    <div class="unit-card" id="uc-v3-1">
+      <div class="unit-head" onclick="toggleCard('v3-1')">
+        <div class="unit-number">★</div>
+        <div class="unit-info"><h3>B2 Flashcard Deck — 20 Cards</h3><span>Click card to flip, arrows to navigate</span></div>
+        <span class="unit-tag tag-vocab">Vocab</span>
+        <button class="unit-complete-btn" id="ucb-v3-1" onclick="markUnit('v3-1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-v3-1">
+        <div id="flashcard-container"></div>
+        <div class="content-block" style="margin-top:20px"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="v3-1"><span class="lesson-text">Go through all 20 flashcards at least twice</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="v3-1"><span class="lesson-text">Write 10 sentences using flashcard words from this deck</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     READING COMPREHENSION
+═══════════════════════════════════════ -->
+<div class="section" id="sec-reading">
+  <div class="page-header">
+    <div class="page-header-label">Skills · Leseverstehen</div>
+    <h1>Reading Comprehension<br><em>Texts &amp; Questions</em></h1>
+    <p>Read authentic B2-level texts, then answer comprehension questions.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+
+    <div class="unit-card" id="uc-r1">
+      <div class="unit-head" onclick="toggleCard('r1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Text 1: Homeoffice — Fluch oder Segen?</h3><span>Opinion article · ~300 words</span></div>
+        <span class="unit-tag tag-skill">Reading</span>
+        <button class="unit-complete-btn" id="ucb-r1" onclick="markUnit('r1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-r1">
+        <div class="reading-passage">
+          <h3>Homeoffice: Fluch oder Segen?</h3>
+          <div class="author">Kommentar · Wirtschaft &amp; Gesellschaft</div>
+          <p>Die Coronapandemie hat die Arbeitswelt grundlegend verändert. Was zuvor als Ausnahme galt, ist heute für Millionen von Menschen in Deutschland Alltag: das Arbeiten von zu Hause aus. Doch auch Jahre nach dem Ende der Pandemie ist die Debatte um das Homeoffice noch immer nicht beendet.</p>
+          <p>Befürworter des Homeoffice betonen die Vorteile für die Work-Life-Balance. Arbeitnehmer sparen täglich Pendelzeit, können flexibler auf familiäre Anforderungen reagieren und berichten oft von höherer Konzentration in der eigenen Umgebung. Studien belegen zudem, dass viele Beschäftigte im Homeoffice produktiver sind als im Büro – vorausgesetzt, die technischen Voraussetzungen stimmen.</p>
+          <p>Kritiker hingegen warnen vor der zunehmenden Isolation der Mitarbeitenden. Informeller Austausch, spontane Teamgespräche und die gemeinsame Kaffeepause – all das fällt im Homeoffice weg. Besonders für neue Beschäftigte, die sich noch in das Unternehmen einarbeiten, kann die fehlende physische Präsenz zum Problem werden. Auch die Trennung von Beruf und Privatleben leidet, wenn das Arbeitszimmer gleichzeitig Küche und Kinderzimmer ist.</p>
+          <p>Einig sind sich die meisten Experten darin, dass hybride Modelle – also eine Kombination aus Büro- und Heimarbeit – die Zukunft der Arbeit darstellen. Entscheidend ist dabei nicht die Frage, <em>wo</em> gearbeitet wird, sondern <em>wie</em>: mit klaren Absprachen, moderner Technik und gegenseitigem Vertrauen.</p>
+          <p>Die Arbeitswelt der Zukunft wird vielfältiger sein als je zuvor. Die Herausforderung für Unternehmen und Beschäftigte gleichermaßen besteht darin, die Vorteile beider Welten zu nutzen – und die Nachteile zu minimieren.</p>
+        </div>
+        <div style="margin-top:16px"><div id="quiz-r1"></div></div>
+        <div class="content-block" style="margin-top:16px"><h4>Study Tasks</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="r1"><span class="lesson-text">Read the text once quickly (skimming) — identify main topic and stance</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="r1"><span class="lesson-text">Read again carefully and underline discourse connectors (Konnektoren)</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="r1"><span class="lesson-text">Note 8 new B2 vocabulary items from this text</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="r1"><span class="lesson-text">Answer all comprehension questions above</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit-card" id="uc-r2">
+      <div class="unit-head" onclick="toggleCard('r2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Text 2: Künstliche Intelligenz im Bildungssystem</h3><span>Informational text · ~280 words</span></div>
+        <span class="unit-tag tag-skill">Reading</span>
+        <button class="unit-complete-btn" id="ucb-r2" onclick="markUnit('r2',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-r2">
+        <div class="reading-passage">
+          <h3>Künstliche Intelligenz im Bildungssystem</h3>
+          <div class="author">Bildungspolitik · Technologie und Gesellschaft</div>
+          <p>Seit dem weltweiten Durchbruch großer Sprachmodelle diskutieren Bildungsexperten intensiv über die Rolle künstlicher Intelligenz im Unterricht. Während manche Lehrkräfte KI-Werkzeuge bereits aktiv in ihre Unterrichtspraxis integrieren, reagieren andere mit Skepsis oder offener Ablehnung.</p>
+          <p>Die Möglichkeiten sind vielfältig: KI-Systeme können Schülerinnen und Schülern individuell angepasstes Übungsmaterial bereitstellen, Lehrkräfte bei der Unterrichtsvorbereitung entlasten und sogar bei der automatischen Korrektur von Texten unterstützen. Besonders in inklusiven Bildungsumgebungen verspricht der Einsatz adaptiver Lernplattformen große Fortschritte.</p>
+          <p>Doch die Risiken sind ebenso real. Datenschutzbedenken, die digitale Kluft zwischen gut ausgestatteten und benachteiligten Schulen sowie die Gefahr, dass Schüler kritisches Denken verlernen, wenn sie Antworten einfach von einer Maschine erhalten – all das sind legitime Einwände.</p>
+          <p>Besonders kontrovers ist die Frage der akademischen Integrität. Wenn Schüler Aufsätze mithilfe von KI verfassen, wird die Leistungsbeurteilung zur Herausforderung. Einige Schulen haben darauf mit Verboten reagiert; andere setzen auf Transparenz und schulen ihre Schüler im reflektierten Umgang mit KI-Werkzeugen.</p>
+          <p>Einig sind sich die meisten Fachleute darin: KI wird aus dem Bildungssystem nicht mehr wegzudenken sein. Die entscheidende Frage ist nicht ob, sondern wie sie eingesetzt wird – pädagogisch sinnvoll, ethisch verantwortungsvoll und im Dienst aller Lernenden.</p>
+        </div>
+        <div style="margin-top:16px"><div id="quiz-r2"></div></div>
+        <div class="content-block" style="margin-top:16px"><h4>Study Tasks</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="r2"><span class="lesson-text">Summarise the author's argument in 3 sentences in German</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="r2"><span class="lesson-text">Find all concessive conjunctions (obwohl, zwar, jedoch…) in the text</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     LISTENING
+═══════════════════════════════════════ -->
+<div class="section" id="sec-listening">
+  <div class="page-header">
+    <div class="page-header-label">Skills · Hörverstehen</div>
+    <h1>Listening Exercises<br><em>Transcripts &amp; Tasks</em></h1>
+    <p>Practice with authentic-style dialogue transcripts and comprehension tasks. Use the scripts to read along, then test yourself.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+
+    <div class="unit-card" id="uc-l1">
+      <div class="unit-head" onclick="toggleCard('l1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Dialogue 1: Vorstellungsgespräch</h3><span>Job interview dialogue · comprehension questions</span></div>
+        <span class="unit-tag tag-skill">Listening</span>
+        <button class="unit-complete-btn" id="ucb-l1" onclick="markUnit('l1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-l1">
+        <div class="listening-block">
+          <div class="listen-player">
+            <button class="listen-play-btn" onclick="toggleAudio('a1')">
+              <div class="listen-play-icon" id="play-icon-a1"></div>
+            </button>
+            <div class="listen-info">
+              <div class="listen-title">Vorstellungsgespräch — Medienunternehmen</div>
+              <div class="listen-desc">Dialogue transcript · Read aloud or use text-to-speech · ~4 minutes</div>
+            </div>
+            <div class="listen-waveform" id="wave-a1">
+              <div class="listen-bar" style="height:8px"></div><div class="listen-bar" style="height:16px"></div><div class="listen-bar" style="height:12px"></div><div class="listen-bar" style="height:20px"></div><div class="listen-bar" style="height:10px"></div><div class="listen-bar" style="height:18px"></div><div class="listen-bar" style="height:14px"></div><div class="listen-bar" style="height:8px"></div>
+            </div>
+          </div>
+          <button class="show-script-btn" onclick="toggleScript('s1')">▶ Show / Hide Transcript</button>
+          <div class="listen-script" id="script-s1">
+            <p><strong style="color:var(--gold)">Interviewerin (Frau Weber):</strong> Guten Morgen, Herr Mensah. Nehmen Sie bitte Platz. Ich freue mich, dass Sie heute zu uns gekommen sind.</p>
+            <p style="margin-top:8px"><strong style="color:var(--text)">Bewerber (Herr Mensah):</strong> Guten Morgen, Frau Weber. Vielen Dank für die Einladung. Ich freue mich sehr auf das Gespräch.</p>
+            <p style="margin-top:8px"><strong style="color:var(--gold)">Frau Weber:</strong> Herr Mensah, Sie haben sich auf die Stelle als E-Learning-Entwickler beworben. Könnten Sie uns kurz beschreiben, warum genau diese Position Sie interessiert?</p>
+            <p style="margin-top:8px"><strong style="color:var(--text)">Herr Mensah:</strong> Gerne. Ich habe in den vergangenen zwei Jahren als Praktikant in einem Unternehmen der Medizintechnik gearbeitet und dort umfangreiche Erfahrungen im Bereich E-Learning und digitale Lernkonzepte gesammelt. Was mich an Ihrer Ausschreibung besonders angesprochen hat, ist die Möglichkeit, sowohl konzeptionell als auch technisch tätig zu sein. Ich sehe meine Stärken in der Verknüpfung beider Bereiche.</p>
+            <p style="margin-top:8px"><strong style="color:var(--gold)">Frau Weber:</strong> Das klingt vielversprechend. Welche Tools und Technologien haben Sie in Ihrer bisherigen Tätigkeit eingesetzt?</p>
+            <p style="margin-top:8px"><strong style="color:var(--text)">Herr Mensah:</strong> In erster Linie habe ich mit Articulate 360 gearbeitet, sowohl Storyline als auch Rise. Darüber hinaus habe ich Erfahrungen mit Adobe Premiere Pro für Videobearbeitung sowie mit dem Lernmanagementsystem Moodle. Für die konzeptionelle Phase nutze ich das ADDIE-Modell als didaktisches Rahmenwerk.</p>
+            <p style="margin-top:8px"><strong style="color:var(--gold)">Frau Weber:</strong> Sehr gut. Eine letzte Frage für heute: Wo sehen Sie sich in fünf Jahren beruflich?</p>
+            <p style="margin-top:8px"><strong style="color:var(--text)">Herr Mensah:</strong> Ich möchte mich mittelfristig zur Führungskraft in der Abteilung Learning &amp; Development entwickeln. Dafür plane ich, meine Kenntnisse im Bereich Instructional Design sowie meine Sprachkompetenzen weiter auszubauen. Besonders das Deutsche möchte ich auf B2-Niveau festigen und langfristig auf C1 verbessern.</p>
+            <p style="margin-top:8px"><strong style="color:var(--gold)">Frau Weber:</strong> Das ist ein sehr realistischer und motivierter Plan, Herr Mensah. Wir melden uns innerhalb der nächsten Woche bei Ihnen. Vielen Dank für das Gespräch.</p>
+            <p style="margin-top:8px"><strong style="color:var(--text)">Herr Mensah:</strong> Ich danke Ihnen ebenfalls, Frau Weber. Ich freue mich auf Ihre Rückmeldung.</p>
+          </div>
+        </div>
+        <div style="margin-top:16px"><div id="quiz-l1"></div></div>
+        <div class="content-block" style="margin-top:16px"><h4>Study Tasks</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="l1"><span class="lesson-text">Read the dialogue aloud twice, switching roles</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="l1"><span class="lesson-text">Note all Konjunktiv II and Konjunktiv I forms used</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="l1"><span class="lesson-text">Answer the comprehension questions above</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="l1"><span class="lesson-text">Record yourself performing Herr Mensah's answers and listen back</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit-card" id="uc-l2">
+      <div class="unit-head" onclick="toggleCard('l2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Dialogue 2: Diskussion über Klimaschutz</h3><span>Radio discussion transcript · opinion language</span></div>
+        <span class="unit-tag tag-skill">Listening</span>
+        <button class="unit-complete-btn" id="ucb-l2" onclick="markUnit('l2',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-l2">
+        <div class="listening-block">
+          <div class="listen-player">
+            <button class="listen-play-btn" onclick="toggleAudio('a2')">
+              <div class="listen-play-icon" id="play-icon-a2"></div>
+            </button>
+            <div class="listen-info">
+              <div class="listen-title">Klimadebatte — Radiopodcast-Ausschnitt</div>
+              <div class="listen-desc">Transcript of radio discussion · Read along · ~3 minutes</div>
+            </div>
+          </div>
+          <button class="show-script-btn" onclick="toggleScript('s2')">▶ Show / Hide Transcript</button>
+          <div class="listen-script" id="script-s2">
+            <p><strong style="color:var(--gold)">Moderatorin:</strong> Willkommen bei „Zukunft jetzt". Heute diskutieren wir über die Frage: Tun wir genug für den Klimaschutz? Ich habe zwei Gäste bei mir – einen Klimawissenschaftler und eine Vertreterin des Wirtschaftsverbands.</p>
+            <p style="margin-top:8px"><strong style="color:var(--text)">Dr. Hoffmann (Klimawissenschaftler):</strong> Meiner Meinung nach tun wir bei Weitem nicht genug. Die CO₂-Emissionen sinken zwar langsam, aber die nötigen Reduktionsziele werden bei diesem Tempo nicht erreicht werden. Wenn wir die Erderwärmung auf 1,5 Grad begrenzen wollten, müsste jetzt viel entschlossener gehandelt werden.</p>
+            <p style="margin-top:8px"><strong style="color:var(--gold)">Frau Brandt (Wirtschaftsverband):</strong> Das sehe ich etwas anders. Natürlich ist Klimaschutz wichtig – daran zweifelt niemand mehr. Aber wir müssen auch die wirtschaftlichen Realitäten berücksichtigen. Ein zu schneller Umbau der Industrie gefährdet Arbeitsplätze und könnte Deutschland im internationalen Wettbewerb benachteiligen.</p>
+            <p style="margin-top:8px"><strong style="color:var(--text)">Dr. Hoffmann:</strong> Ich räume ein, dass wirtschaftliche Interessen nicht ignoriert werden können. Allerdings zeigen Studien, dass eine grüne Wirtschaft langfristig mehr Arbeitsplätze schafft als vernichtet. Das Argument der wirtschaftlichen Gefährdung wird meines Erachtens übertrieben.</p>
+            <p style="margin-top:8px"><strong style="color:var(--gold)">Frau Brandt:</strong> Zugegeben, langfristig mag das stimmen. Aber kurzfristig tragen die Arbeitnehmer die Kosten des Wandels. Deshalb brauchen wir einen sozial gerechten Übergang – mit staatlicher Unterstützung für betroffene Branchen und Regionen.</p>
+            <p style="margin-top:8px"><strong style="color:var(--text)">Moderatorin:</strong> Eine spannende Debatte. Einig sind Sie sich immerhin darin, dass Handlungsbedarf besteht. Vielen Dank an unsere Gäste.</p>
+          </div>
+        </div>
+        <div style="margin-top:16px"><div id="quiz-l2"></div></div>
+        <div class="content-block" style="margin-top:16px"><h4>Study Tasks</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="l2"><span class="lesson-text">Identify all opinion/argument phrases used (Meiner Meinung nach, Ich räume ein…)</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="l2"><span class="lesson-text">Summarise each speaker's position in one sentence each</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     WRITING
+═══════════════════════════════════════ -->
+<div class="section" id="sec-writing">
+  <div class="page-header">
+    <div class="page-header-label">Skills · Schreiben</div>
+    <h1>Writing Tasks<br><em>Formal &amp; Opinion Writing</em></h1>
+    <p>Complete these writing tasks in the text areas below. Your work is saved automatically in your browser.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+
+    <div class="unit-card" id="uc-w1">
+      <div class="unit-head" onclick="toggleCard('w1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Task 1: Formeller Brief — Beschwerde</h3><span>Formal complaint letter · 180–220 words</span></div>
+        <span class="unit-tag tag-skill">Writing</span>
+        <button class="unit-complete-btn" id="ucb-w1" onclick="markUnit('w1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-w1">
+        <div class="writing-task">
+          <div class="writing-prompt">
+            <strong style="display:block;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Schreibaufgabe</strong>
+            Sie haben vor zwei Wochen einen Laptop bei einem Online-Shop bestellt. Das Gerät ist beschädigt angekommen und funktioniert nicht. Sie haben bereits zweimal per E-Mail geschrieben, aber keine Antwort bekommen. Schreiben Sie einen formellen Beschwerdebrief an den Kundendienst. Fordern Sie eine Lösung (Rückgabe oder Ersatzgerät) und setzen Sie eine Frist von 7 Tagen.
+          </div>
+          <div style="margin-bottom:10px">
+            <div style="font-size:11px;color:var(--text3);margin-bottom:8px;letter-spacing:0.1em;text-transform:uppercase">Useful Phrases</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <span style="background:var(--surface3);color:var(--text2);font-size:11.5px;padding:4px 10px;border-radius:5px">Ich schreibe Ihnen bezüglich…</span>
+              <span style="background:var(--surface3);color:var(--text2);font-size:11.5px;padding:4px 10px;border-radius:5px">Trotz mehrmaliger Kontaktaufnahme…</span>
+              <span style="background:var(--surface3);color:var(--text2);font-size:11.5px;padding:4px 10px;border-radius:5px">Ich erwarte eine Rückmeldung bis zum…</span>
+              <span style="background:var(--surface3);color:var(--text2);font-size:11.5px;padding:4px 10px;border-radius:5px">Sehr geehrte Damen und Herren,</span>
+              <span style="background:var(--surface3);color:var(--text2);font-size:11.5px;padding:4px 10px;border-radius:5px">Mit freundlichen Grüßen</span>
+              <span style="background:var(--surface3);color:var(--text2);font-size:11.5px;padding:4px 10px;border-radius:5px">Sollte ich keine Antwort erhalten…</span>
+            </div>
+          </div>
+          <textarea class="writing-textarea" id="wt-w1" placeholder="Schreiben Sie hier Ihren Beschwerdebrief…" oninput="updateWC('w1')"></textarea>
+          <div class="writing-meta">
+            <span class="wc-target">Target: 180–220 words</span>
+            <span class="wc-count" id="wc-w1">0 words</span>
+          </div>
+          <div class="writing-tips">
+            <h5>Checklist</h5>
+            <ul style="list-style:none">
+              <li class="writing-tips li">Correct formal opening and closing</li>
+              <li class="writing-tips li">Clear statement of the problem</li>
+              <li class="writing-tips li">Specific demand + deadline</li>
+              <li class="writing-tips li">Konjunktiv II for polite demands (würde, könnte)</li>
+              <li class="writing-tips li">Appropriate register throughout (no du-form, no colloquialisms)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="content-block" style="margin-top:16px"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="w1"><span class="lesson-text">Complete the formal complaint letter (aim for 180–220 words)</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="w1"><span class="lesson-text">Self-check: formal register, correct greeting/closing, Konjunktiv II used</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit-card" id="uc-w2">
+      <div class="unit-head" onclick="toggleCard('w2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Task 2: Erörterung — Meinung</h3><span>Opinion essay · 200–250 words</span></div>
+        <span class="unit-tag tag-skill">Writing</span>
+        <button class="unit-complete-btn" id="ucb-w2" onclick="markUnit('w2',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-w2">
+        <div class="writing-task">
+          <div class="writing-prompt">
+            <strong style="display:block;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Schreibaufgabe</strong>
+            In vielen Ländern wird diskutiert, ob soziale Medien für Kinder und Jugendliche unter 16 Jahren verboten werden sollten. Schreiben Sie einen Kommentar für eine Schülerzeitung, in dem Sie Ihre Meinung zu diesem Thema darlegen. Gehen Sie auf Vor- und Nachteile ein und kommen Sie zu einer begründeten Schlussfolgerung.
+          </div>
+          <div style="margin-bottom:10px">
+            <div style="font-size:11px;color:var(--text3);margin-bottom:8px;letter-spacing:0.1em;text-transform:uppercase">Essay Structure</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span style="background:var(--gold-dim);color:var(--gold);font-size:11.5px;padding:4px 12px;border-radius:5px">① Einleitung: These + Hook</span>
+              <span style="background:var(--gold-dim);color:var(--gold);font-size:11.5px;padding:4px 12px;border-radius:5px">② Pro-Argumente</span>
+              <span style="background:var(--gold-dim);color:var(--gold);font-size:11.5px;padding:4px 12px;border-radius:5px">③ Contra-Argumente</span>
+              <span style="background:var(--gold-dim);color:var(--gold);font-size:11.5px;padding:4px 12px;border-radius:5px">④ Schlussfolgerung</span>
+            </div>
+          </div>
+          <textarea class="writing-textarea" id="wt-w2" placeholder="Schreiben Sie hier Ihren Kommentar…" oninput="updateWC('w2')"></textarea>
+          <div class="writing-meta">
+            <span class="wc-target">Target: 200–250 words</span>
+            <span class="wc-count" id="wc-w2">0 words</span>
+          </div>
+          <div class="writing-tips">
+            <h5>Useful connectors for this task</h5>
+            <ul style="list-style:none">
+              <li class="writing-tips li">Einerseits … andererseits / Zwar … aber / Trotzdem / Allerdings</li>
+              <li class="writing-tips li">Darüber hinaus / Des Weiteren / Zudem</li>
+              <li class="writing-tips li">Meiner Meinung nach / Ich bin der Überzeugung, dass…</li>
+              <li class="writing-tips li">Zusammenfassend lässt sich sagen, dass…</li>
+            </ul>
+          </div>
+        </div>
+        <div class="content-block" style="margin-top:16px"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="w2"><span class="lesson-text">Write the essay using the 4-part structure</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="w2"><span class="lesson-text">Check: minimum 4 different connectors used</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="w2"><span class="lesson-text">Check: at least one counter-argument with rebuttal</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SPEAKING
+═══════════════════════════════════════ -->
+<div class="section" id="sec-speaking">
+  <div class="page-header">
+    <div class="page-header-label">Skills · Sprechen</div>
+    <h1>Speaking Exercises<br><em>Topics &amp; Timed Practice</em></h1>
+    <p>Use the speaking cards and timed practice to build fluency and prepare for the B2 oral exam.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+
+    <div class="unit-card" id="uc-sp1">
+      <div class="unit-head" onclick="toggleCard('sp1')">
+        <div class="unit-number">1</div>
+        <div class="unit-info"><h3>Phrasebank — Meinungsäußerung</h3><span>Opinion, agreement, disagreement, hedging</span></div>
+        <span class="unit-tag tag-skill">Speaking</span>
+        <button class="unit-complete-btn" id="ucb-sp1" onclick="markUnit('sp1',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-sp1">
+        <div class="content-block">
+          <table class="grammar-table">
+            <tr><th>Function</th><th>German phrase</th><th>Register</th></tr>
+            <tr><td>Opinion</td><td class="de">Meiner Meinung nach… / Ich bin der Ansicht, dass…</td><td>Formal</td></tr>
+            <tr><td>Opinion</td><td class="de">Ich finde, dass… / Ich glaube, dass…</td><td>Neutral</td></tr>
+            <tr><td>Agreement</td><td class="de">Das stimmt. / Ich sehe das genauso. / Absolut.</td><td>Neutral</td></tr>
+            <tr><td>Partial agree</td><td class="de">Einerseits stimme ich zu, andererseits…</td><td>Formal</td></tr>
+            <tr><td>Disagreement</td><td class="de">Da bin ich anderer Meinung. / Das sehe ich anders.</td><td>Formal</td></tr>
+            <tr><td>Conceding</td><td class="de">Zugegeben… / Ich räume ein, dass… / Zwar… aber…</td><td>Formal</td></tr>
+            <tr><td>Hedging</td><td class="de">Es kommt darauf an… / Das ist schwer zu sagen.</td><td>Neutral</td></tr>
+            <tr><td>Emphasising</td><td class="de">Besonders wichtig ist… / Es ist unbedingt nötig, dass…</td><td>Formal</td></tr>
+            <tr><td>Concluding</td><td class="de">Zusammenfassend lässt sich sagen… / Alles in allem…</td><td>Formal</td></tr>
+            <tr><td>Buying time</td><td class="de">Das ist eine interessante Frage… / Lassen Sie mich kurz überlegen…</td><td>Neutral</td></tr>
+          </table>
+        </div>
+        <div class="content-block"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="sp1"><span class="lesson-text">Memorise at least 2 phrases from each category</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="sp1"><span class="lesson-text">Use these phrases in a 3-minute spoken monologue</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit-card" id="uc-sp2">
+      <div class="unit-head" onclick="toggleCard('sp2')">
+        <div class="unit-number">2</div>
+        <div class="unit-info"><h3>Timed Speaking Topics</h3><span>Prepare 2 min, speak 4 min — tap timer to start</span></div>
+        <span class="unit-tag tag-skill">Speaking</span>
+        <button class="unit-complete-btn" id="ucb-sp2" onclick="markUnit('sp2',event)"></button>
+        <span class="unit-expand">▼</span>
+      </div>
+      <div class="unit-body" id="ub-sp2">
+
+        <div class="speaking-card">
+          <div class="speaking-topic">„Sollte das Autofahren in Innenstädten verboten werden?"</div>
+          <ul class="speaking-prompts" style="list-style:none">
+            <li>Umwelt- und Klimaschutz als Argument für ein Verbot</li>
+            <li>Mobilität und wirtschaftliche Notwendigkeit dagegen</li>
+            <li>Alternative Lösungen: ÖPNV, Radverkehr, E-Mobilität</li>
+            <li>Eigene Meinung mit Begründung</li>
+          </ul>
+          <button class="speaking-timer-btn" onclick="startTimer('t1', 240)">⏱ Start 4-minute timer <span class="timer-display" id="t1">4:00</span></button>
+        </div>
+
+        <div class="speaking-card" style="margin-top:14px">
+          <div class="speaking-topic">„Homeoffice oder Büro — was ist besser?"</div>
+          <ul class="speaking-prompts" style="list-style:none">
+            <li>Produktivität und Konzentration im Vergleich</li>
+            <li>Soziale Aspekte und Teamarbeit</li>
+            <li>Work-Life-Balance: Vor- und Nachteile</li>
+            <li>Hybridmodelle als Kompromiss?</li>
+          </ul>
+          <button class="speaking-timer-btn" onclick="startTimer('t2', 240)">⏱ Start 4-minute timer <span class="timer-display" id="t2">4:00</span></button>
+        </div>
+
+        <div class="speaking-card" style="margin-top:14px">
+          <div class="speaking-topic">„Ist ein Studium noch sinnvoll, wenn KI immer mehr Aufgaben übernimmt?"</div>
+          <ul class="speaking-prompts" style="list-style:none">
+            <li>Welche Fähigkeiten werden durch ein Studium gefördert?</li>
+            <li>Welche Jobs sind durch KI bedroht?</li>
+            <li>Der Wert von Kreativität und soziale Kompetenzen</li>
+            <li>Persönliche Einschätzung zur Zukunft der Bildung</li>
+          </ul>
+          <button class="speaking-timer-btn" onclick="startTimer('t3', 240)">⏱ Start 4-minute timer <span class="timer-display" id="t3">4:00</span></button>
+        </div>
+
+        <div class="content-block" style="margin-top:20px"><h4>Lessons</h4>
+          <ul style="list-style:none">
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="sp2"><span class="lesson-text">Complete all 3 timed speaking exercises (record yourself if possible)</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="sp2"><span class="lesson-text">Self-assess: fluency, vocabulary range, accuracy, argument structure</span></li>
+            <li class="lesson-item"><input type="checkbox" class="lesson-cb" data-unit="sp2"><span class="lesson-text">Find a Tandem partner and discuss one of these topics for 20 minutes</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TEST 1 — GRAMMAR
+═══════════════════════════════════════ -->
+<div class="section" id="sec-test1">
+  <div class="page-header">
+    <div class="page-header-label">Assessment · Grammar Test</div>
+    <h1>Grammatiktest B2<br><em>20 Questions · Timed</em></h1>
+    <p>This test covers all grammar modules. Pass mark: 60% (12/20). Score is saved and counted toward your certificate.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+    <div id="quiz-test1-main"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TEST 2 — READING
+═══════════════════════════════════════ -->
+<div class="section" id="sec-test2">
+  <div class="page-header">
+    <div class="page-header-label">Assessment · Reading Test</div>
+    <h1>Leseverstehen B2<br><em>Comprehension Test</em></h1>
+    <p>Read the passage and answer all questions. Pass mark: 60%.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+    <div id="quiz-test2-main"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TEST 3 — FULL MOCK
+═══════════════════════════════════════ -->
+<div class="section" id="sec-test3">
+  <div class="page-header">
+    <div class="page-header-label">Assessment · Full Mock Exam</div>
+    <h1>Modellprüfung B2<br><em>25 Questions</em></h1>
+    <p>Mixed grammar, vocabulary and reading comprehension. This is your final mock before the certificate. Pass mark: 60%.</p>
+  </div>
+  <div style="padding:32px 48px 80px">
+    <div id="quiz-test3-main"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CERTIFICATE
+═══════════════════════════════════════ -->
+<div class="section" id="sec-cert" style="padding:0">
+  <div id="cert-section">
+    <div class="cert-locked" id="certLocked">
+      <div class="lock-icon">🔒</div>
+      <h2>Certificate Locked</h2>
+      <p>Complete all modules and achieve a pass mark of 60% on at least 2 of the 3 tests to unlock your certificate.</p>
+      <div class="cert-progress-bar"><div class="cert-progress-fill" id="certProgFill"></div></div>
+      <div class="cert-progress-label" id="certProgLabel">0% towards unlock</div>
+    </div>
+    <div class="certificate" id="certDisplay">
+      <div class="cert-corner cert-corner-tl"></div>
+      <div class="cert-corner cert-corner-tr"></div>
+      <div class="cert-corner cert-corner-bl"></div>
+      <div class="cert-corner cert-corner-br"></div>
+      <div class="cert-emblem">🎓</div>
+      <div class="cert-issued">This certifies that</div>
+      <input class="cert-name-input" id="certName" type="text" value="Your Name" placeholder="Enter your name">
+      <div class="cert-title">Goethe-Zertifikat</div>
+      <div class="cert-subtitle">Niveau B2 — Selbststudium</div>
+      <p class="cert-body">has successfully completed the <strong>Deutsch B2 Complete Study Programme</strong>, demonstrating Upper Intermediate proficiency in grammar, vocabulary, reading, listening, writing, and speaking.</p>
+      <div class="cert-score" id="certScoreDisplay">Score: —</div>
+      <div class="cert-footer">
+        <div><div style="font-size:14px;color:var(--text);margin-bottom:4px">CEFR Level</div>B2 — Vantage</div>
+        <div><div style="font-size:14px;color:var(--text);margin-bottom:4px">Date</div><span id="certDate"></span></div>
+        <div><div style="font-size:14px;color:var(--text);margin-bottom:4px">Programme</div>Self-Study</div>
+      </div>
+      <button class="cert-download-btn" onclick="downloadCert()">⬇ Download Certificate (PNG)</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- end #content -->
+</div><!-- end #app -->
+
+<div class="toast" id="toast"></div>
+
+<!-- STATS BAR -->
+<div class="stats-bar" id="statsBar" style="display:none">
+  <div class="stat-item"><div class="stat-dot gold"></div>Progress: <strong id="statPct">0%</strong></div>
+  <div class="stat-item"><div class="stat-dot green"></div>Units done: <strong id="statDone">0</strong></div>
+  <div class="stat-item"><div class="stat-dot blue"></div>Test avg: <strong id="statAvg">—</strong></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════
+const QUIZZES = {
+  'g1': [
+    {q:'Choose the correct Konjunktiv II form: "Ich ___ gerne mehr schlafen."',opts:['A. werde','B. würde','C. wäre','D. hätte'],ans:1,exp:'würde + Infinitiv is the standard Konjunktiv II for most verbs.'},
+    {q:'Polite request — Which is correct? "Could you help me?"',opts:['A. Können Sie mir helfen?','B. Könnten Sie mir helfen?','C. Wurden Sie mir helfen?','D. Wären Sie helfen?'],ans:1,exp:'Könnten (Konj.II of können) makes the request more polite.'},
+    {q:'Past irrealis: "If she had come, we ___ happy."',opts:['A. wären gewesen','B. würden gewesen','C. wären worden','D. worden wären'],ans:0,exp:'wären + Partizip II (gewesen) — past Konjunktiv II with sein.'},
+    {q:'Which sentence uses Konjunktiv II correctly?',opts:['A. Wenn ich Zeit habe, ich würde lesen.','B. Wenn ich Zeit hätte, würde ich lesen.','C. Wenn ich Zeit hätte, lesen ich.','D. Ich lesen würde wenn Zeit hätte.'],ans:1,exp:'Correct structure: wenn + Konj.II … würde + Infinitiv (verb-final in wenn-clause).'},
+    {q:'"Ich wünschte, das ___ nicht so."',opts:['A. ist','B. war','C. wäre','D. sei'],ans:2,exp:'wäre (Konjunktiv II of sein) expresses a wish about the present.'},
+  ],
+  'g2': [
+    {q:'Which is correct Vorgangspassiv (Präsens)?',opts:['A. Das Buch ist geschrieben.','B. Das Buch wird geschrieben.','C. Das Buch wurde geschrieben.','D. Das Buch ist geschrieben worden.'],ans:1,exp:'Präsens Passiv = wird + Partizip II.'},
+    {q:'"The problem must be solved." — Passiv with modal:',opts:['A. Das Problem muss gelöst sein.','B. Das Problem wird gelöst müssen.','C. Das Problem muss gelöst werden.','D. Das Problem soll lösen werden.'],ans:2,exp:'Modal + Partizip II + werden — muss gelöst werden.'},
+    {q:'Zustandspassiv: "The window is open (state)."',opts:['A. Das Fenster wird geöffnet.','B. Das Fenster ist geöffnet.','C. Das Fenster wurde geöffnet.','D. Das Fenster ist geöffnet worden.'],ans:1,exp:'sein + Partizip II = Zustandspassiv (a state, not an action).'},
+    {q:'"Das lässt sich leicht ___ ." (explain)',opts:['A. erklären','B. erklärt','C. erklärend','D. erkläre'],ans:0,exp:'lassen + sich + Infinitiv = passive alternative.'},
+  ],
+  'g3': [
+    {q:'"Das ist der Mann, ___ ich kenne." (whom I know)',opts:['A. der','B. die','C. den','D. dem'],ans:2,exp:'Akkusativ masculine → den. "ich kenne jemanden" — Akk.'},
+    {q:'"Das Haus, ___ ich wohne, ist alt." (in which)',opts:['A. das','B. dem','C. in das','D. in dem'],ans:3,exp:'Preposition in + Dativ neuter → in dem (or "worin" in elevated style).'},
+    {q:'"Ein Autor, ___ Bücher weltbekannt sind."',opts:['A. der','B. dessen','C. dem','D. den'],ans:1,exp:'Genitive masculine → dessen.'},
+    {q:'"Alles, ___ er sagte, war falsch."',opts:['A. das','B. die','C. was','D. welches'],ans:2,exp:'After "alles", use was as relative pronoun.'},
+  ],
+  'g4': [
+    {q:'"___ es regnete, gingen wir spazieren." (although)',opts:['A. Weil','B. Obwohl','C. Damit','D. Nachdem'],ans:1,exp:'obwohl = although (concessive).'},
+    {q:'"___ er gegessen hatte, rief er an." (after)',opts:['A. Bevor','B. Während','C. Nachdem','D. Als'],ans:2,exp:'nachdem = after (implies sequence, uses Plusquamperfekt).'},
+    {q:'Two-part connector for "both … and":',opts:['A. entweder … oder','B. weder … noch','C. sowohl … als auch','D. zwar … aber'],ans:2,exp:'sowohl … als auch = both … and.'},
+    {q:'"She studies ___ she passes." (so that)',opts:['A. weil','B. obwohl','C. damit','D. falls'],ans:2,exp:'damit = so that (final clause — different subject from main clause).'},
+  ],
+  'g5': [
+    {q:'Konjunktiv I of "sein" (er/sie/es):',opts:['A. wäre','B. ist','C. sei','D. seie'],ans:2,exp:'"sei" is the Konjunktiv I form of sein — used for reported speech.'},
+    {q:'"Er sagte, er ___ müde." (reported speech)',opts:['A. ist','B. wäre','C. sei','D. war'],ans:2,exp:'Konjunktiv I "sei" is used for formal reported speech with sein.'},
+    {q:'When do you use Konjunktiv II instead of Konjunktiv I in reported speech?',opts:['A. Always','B. When Konj.I = Indikativ (identical forms)','C. With irregular verbs','D. In informal contexts only'],ans:1,exp:'When Konj.I looks identical to Indikativ (e.g. wir kommen), use Konj.II instead.'},
+    {q:'Direct: "Wir haben das Projekt abgeschlossen." → Indirect:',opts:['A. Sie sagten, wir hätten das Projekt abgeschlossen.','B. Sie sagten, wir haben das Projekt abgeschlossen.','C. Sie sagten, sie hätten das Projekt abgeschlossen.','D. Sie sagten, sie haben abgeschlossen das Projekt.'],ans:2,exp:'Person shifts: "wir" → "sie"; Perfekt → Konjunktiv II of haben (hätten) + Partizip.'},
+  ],
+  'v1': [
+    {q:'What does "die Probezeit" mean?',opts:['A. Holiday period','B. Probationary period','C. Training day','D. Notice period'],ans:1,exp:'Probezeit = the trial/probationary period at the start of employment.'},
+    {q:'"Sich um eine Stelle ___ " means to apply for a job.',opts:['A. annehmen','B. bewerben','C. vorstellen','D. einreichen'],ans:1,exp:'sich bewerben um + Akk = to apply for (a position).'},
+    {q:'Which phrase means "to hand in an application"?',opts:['A. eine Bewerbung einreichen','B. eine Stelle kündigen','C. einen Lebenslauf führen','D. eine Weiterbildung besuchen'],ans:0,exp:'einreichen = to submit/hand in.'},
+    {q:'"Eigenverantwortlich arbeiten" means:',opts:['A. To work overtime','B. To work independently/self-directed','C. To work in a team','D. To work part-time'],ans:1,exp:'eigenverantwortlich = taking personal responsibility, working independently.'},
+  ],
+  'r1': [
+    {q:'What is the main topic of the Homeoffice text?',opts:['A. How to set up a home office','B. The pros and cons of remote work','C. German labour law changes','D. The history of telecommuting'],ans:1,exp:'The text presents arguments for and against working from home.'},
+    {q:'According to the text, what do critics of Homeoffice warn about?',opts:['A. Higher energy costs','B. Increasing isolation of employees','C. Reduced internet speeds','D. Loss of client relationships'],ans:1,exp:'"Kritiker warnen vor der zunehmenden Isolation der Mitarbeitenden."'},
+    {q:'What solution do most experts agree on?',opts:['A. Full office return','B. Permanent remote work','C. Hybrid models combining both','D. Four-day work weeks'],ans:2,exp:'"Hybride Modelle … die Zukunft der Arbeit" — most experts agree on hybrid.'},
+    {q:'The word "Pendelzeit" (paragraph 2) most likely means:',opts:['A. Working hours','B. Lunch break','C. Commuting time','D. Overtime'],ans:2,exp:'pendeln = to commute; Pendelzeit = commuting time.'},
+    {q:'The author\'s overall stance is:',opts:['A. Strongly against Homeoffice','B. Strongly in favour of Homeoffice','C. Balanced, favouring a hybrid approach','D. Neutral, presenting no opinion'],ans:2,exp:'The final paragraph endorses hybrid models, suggesting a nuanced, balanced position.'},
+  ],
+  'r2': [
+    {q:'What does the text say some schools have done in response to AI essay writing?',opts:['A. Required hand-written exams','B. Banned AI tools','C. Introduced AI-literacy courses','D. Both B and C'],ans:3,exp:'"Einige Schulen haben darauf mit Verboten reagiert; andere… schulen ihre Schüler im reflektierten Umgang."'},
+    {q:'The phrase "digitale Kluft" (paragraph 3) refers to:',opts:['A. A type of AI algorithm','B. Digital copyright law','C. The gap between well-equipped and disadvantaged schools','D. The difference between online and offline learning'],ans:2,exp:'"die digitale Kluft zwischen gut ausgestatteten und benachteiligten Schulen"'},
+    {q:'According to the text, what is the key question about AI in education?',opts:['A. Whether AI should be banned','B. Who funds AI in schools','C. Not whether but how AI is used','D. Which AI companies to partner with'],ans:2,exp:'"Die entscheidende Frage ist nicht ob, sondern wie sie eingesetzt wird."'},
+  ],
+  'l1': [
+    {q:'What position is Herr Mensah applying for?',opts:['A. Software Developer','B. Project Manager','C. E-Learning Developer','D. Marketing Specialist'],ans:2,exp:'He applied for an "E-Learning-Entwickler" position.'},
+    {q:'Which tool does he mention first?',opts:['A. Moodle','B. Articulate 360','C. Adobe Premiere Pro','D. PowerPoint'],ans:1,exp:'"In erster Linie habe ich mit Articulate 360 gearbeitet."'},
+    {q:'Where does Herr Mensah see himself in 5 years?',opts:['A. Running his own company','B. Working abroad','C. In a leadership role in L&D','D. As a freelance consultant'],ans:2,exp:'"Ich möchte mich… zur Führungskraft in der Abteilung Learning & Development entwickeln."'},
+    {q:'What German level does he specifically mention wanting to reach long-term?',opts:['A. B1','B. B2','C. C1','D. C2'],ans:2,exp:'"langfristig auf C1 verbessern"'},
+  ],
+  'l2': [
+    {q:'What does Dr. Hoffmann say about current CO₂ reduction?',opts:['A. It is on track','B. It is too fast','C. The required targets will not be met at this pace','D. Emissions are rising'],ans:2,exp:'"die nötigen Reduktionsziele werden bei diesem Tempo nicht erreicht werden."'},
+    {q:'What is Frau Brandt\'s main concern?',opts:['A. Environmental damage','B. Economic impacts and jobs','C. Public transport funding','D. EU regulations'],ans:1,exp:'She warns about job losses and Germany\'s competitive position.'},
+    {q:'What does Dr. Hoffmann say studies show about a green economy?',opts:['A. It costs more than traditional industries','B. It creates more jobs than it destroys long-term','C. It requires massive government subsidies','D. It leads to higher consumer prices'],ans:1,exp:'"eine grüne Wirtschaft langfristig mehr Arbeitsplätze schafft als vernichtet."'},
+  ],
+};
+
+const FLASHCARDS = [
+  {w:'die Herausforderung',h:'noun · f',t:'the challenge',e:'Das ist eine große Herausforderung.'},
+  {w:'berücksichtigen',h:'verb (strong)',t:'to take into account',e:'Wir müssen alle Faktoren berücksichtigen.'},
+  {w:'überzeugend',h:'adjective',t:'convincing / compelling',e:'Sein Argument war sehr überzeugend.'},
+  {w:'das Wohlbefinden',h:'noun · n',t:'well-being',e:'Das Wohlbefinden der Mitarbeiter ist wichtig.'},
+  {w:'sich bewerben um',h:'reflexive + Akk',t:'to apply for',e:'Er bewirbt sich um die Stelle.'},
+  {w:'die Nachhaltigkeit',h:'noun · f',t:'sustainability',e:'Nachhaltigkeit ist ein zentrales Thema.'},
+  {w:'eigenverantwortlich',h:'adjective/adverb',t:'self-directed / independently',e:'Sie arbeitet eigenverantwortlich.'},
+  {w:'darüber hinaus',h:'connector',t:'furthermore / beyond that',e:'Darüber hinaus gibt es weitere Vorteile.'},
+  {w:'die Gleichberechtigung',h:'noun · f',t:'equal rights / equality',e:'Gleichberechtigung am Arbeitsplatz ist gesetzlich verankert.'},
+  {w:'beeinträchtigen',h:'verb',t:'to impair / to affect negatively',e:'Lärm kann die Konzentration beeinträchtigen.'},
+  {w:'die Fachkraft',h:'noun · f',t:'skilled worker / specialist',e:'Deutschland braucht mehr Fachkräfte.'},
+  {w:'angemessen',h:'adjective',t:'appropriate / adequate',e:'Das Gehalt ist angemessen.'},
+  {w:'erläutern',h:'verb',t:'to explain / to elaborate',e:'Könnten Sie das bitte näher erläutern?'},
+  {w:'die Voraussetzung',h:'noun · f',t:'prerequisite / condition',e:'Gute Sprachkenntnisse sind eine Voraussetzung.'},
+  {w:'im Hinblick auf',h:'prepositional phrase + Akk',t:'with regard to / in view of',e:'Im Hinblick auf die Zukunft planen wir…'},
+  {w:'ausreichend',h:'adjective/adverb',t:'sufficient / enough',e:'Die Zeit war nicht ausreichend.'},
+  {w:'die Umsetzung',h:'noun · f',t:'implementation / realisation',e:'Die Umsetzung des Plans verlief gut.'},
+  {w:'sich auseinandersetzen mit',h:'reflexive + Dat',t:'to engage with / deal with',e:'Wir müssen uns mit dem Problem auseinandersetzen.'},
+  {w:'letztendlich',h:'adverb',t:'ultimately / in the end',e:'Letztendlich ist die Entscheidung bei Ihnen.'},
+  {w:'die Schlussfolgerung',h:'noun · f',t:'conclusion / inference',e:'Die Schlussfolgerung des Artikels ist überzeugend.'},
+];
+
+const BIG_GRAMMAR_TEST = [
+  {q:'Select the correct form: "Wenn ich das gewusst ___, wäre ich geblieben."',opts:['A. habe','B. hatte','C. hätte','D. würde'],ans:2,exp:'Past irrealis: hätte + Partizip II = Konjunktiv II Perfekt.'},
+  {q:'"Die Aufgabe ___ bis Freitag erledigt werden." (must)',opts:['A. kann','B. darf','C. muss','D. soll'],ans:2,exp:'muss = must (obligation).'},
+  {q:'Passive in Perfekt: "The letter was written." (complete)',opts:['A. Der Brief wird geschrieben.','B. Der Brief ist geschrieben worden.','C. Der Brief war geschrieben.','D. Der Brief wurde geschrieben.'],ans:1,exp:'Perfekt Passiv = ist … worden.'},
+  {q:'"Das ist die Kollegin, ___ ich täglich zusammenarbeite." (with whom)',opts:['A. der','B. mit der','C. die','D. mit die'],ans:1,exp:'mit + Dativ feminine = mit der.'},
+  {q:'Konjunktiv I of "kommen" (er/sie/es):',opts:['A. käme','B. kommt','C. komme','D. kommt'],ans:2,exp:'Konjunktiv I: komm- stem + -e → komme.'},
+  {q:'"___ sie studiert hatte, fand sie sofort einen Job." (after)',opts:['A. Als','B. Nachdem','C. Wenn','D. Seitdem'],ans:1,exp:'nachdem + Plusquamperfekt indicates sequence.'},
+  {q:'Which is a passive alternative using "sein + zu + Infinitiv"?',opts:['A. Das Formular wird ausgefüllt.','B. Man füllt das Formular aus.','C. Das Formular ist auszufüllen.','D. Das Formular lässt sich ausfüllen.'],ans:2,exp:'sein + zu + Infinitiv = must/should be done.'},
+  {q:'Choose the correct relative pronoun: "Das Problem, ___ Lösung noch aussteht…"',opts:['A. das','B. dessen','C. dem','D. die'],ans:1,exp:'Genitive neuter → dessen.'},
+  {q:'"Ich hätte gern einen Kaffee, ___ es möglich ist." (if)',opts:['A. als','B. damit','C. sofern','D. obwohl'],ans:2,exp:'sofern = provided that / if (conditional).'},
+  {q:'Two-part connector — "Neither the price nor the quality was good."',opts:['A. Sowohl der Preis als auch die Qualität waren gut.','B. Weder der Preis noch die Qualität war gut.','C. Entweder der Preis oder die Qualität war gut.','D. Zwar der Preis aber die Qualität war gut.'],ans:1,exp:'weder … noch = neither … nor.'},
+  {q:'"Er berichtete, er ___ bereits dort gewesen." (reported speech, sein)',opts:['A. sei','B. wäre','C. ist','D. war'],ans:0,exp:'Konjunktiv I of sein = sei.'},
+  {q:'Zustandspassiv: "The shop is closed."',opts:['A. Das Geschäft wird geschlossen.','B. Das Geschäft wurde geschlossen.','C. Das Geschäft ist geschlossen.','D. Das Geschäft ist geschlossen worden.'],ans:2,exp:'sein + Partizip II = Zustandspassiv (state).'},
+  {q:'"Sie arbeitet, ___ sie mehr verdient." (so that)',opts:['A. weil','B. damit','C. obwohl','D. während'],ans:1,exp:'damit = so that (purpose with different subjects).'},
+  {q:'Correct Konjunktiv II of "wissen":',opts:['A. würde wissen','B. wisste','C. wüsste','D. wesstest'],ans:2,exp:'wüsste = Konjunktiv II of wissen (irregular).'},
+  {q:'"___ gut ausgestattete Büros als auch flexible Arbeitszeiten fördern die Produktivität."',opts:['A. Entweder','B. Sowohl','C. Zwar','D. Weder'],ans:1,exp:'sowohl … als auch = both … and.'},
+  {q:'Genitive preposition: "___ des schlechten Wetters wurde das Spiel abgesagt."',opts:['A. Wegen','B. Trotz','C. Während','D. All three are correct'],ans:3,exp:'wegen, trotz, and während all take the genitive.'},
+  {q:'Which sentence is grammatically correct?',opts:['A. Ich wünsche, dass ich mehr Zeit hat.','B. Ich wünschte, ich hätte mehr Zeit.','C. Ich wünschte, ich habe mehr Zeit.','D. Ich wünsche, ich hätte Zeit mehr.'],ans:1,exp:'Ich wünschte + Konjunktiv II = I wish (I had)…'},
+  {q:'"Obwohl er krank ___, kam er ins Büro."',opts:['A. ist','B. war','C. sei','D. wäre'],ans:1,exp:'Indikativ Präteritum after obwohl (real, past fact).'},
+  {q:'Select the passive with agent: "The bridge was designed by a famous architect."',opts:['A. Die Brücke wurde von einem berühmten Architekten entworfen.','B. Die Brücke wird von einem Architekten entwerfen.','C. Die Brücke wurde einem Architekten entworfen.','D. Die Brücke ist von einem berühmten Architekten werden.'],ans:0,exp:'Präteritum Passiv + von + Dativ agent.'},
+  {q:'Correct use of "lassen + sich":',opts:['A. Das Problem wird sich lösen.','B. Das Problem lässt sich lösen.','C. Das Problem ist sich zu lösen.','D. Das Problem kann sich lösen werden.'],ans:1,exp:'lassen + sich + Infinitiv = the passive alternative.'},
+];
+
+const READING_TEST = [
+  {q:'The text (Homeoffice) says studies show that many employees in Homeoffice are…',opts:['A. Less productive','B. More productive (given the right tech)','C. Just as productive','D. No data is mentioned'],ans:1,exp:'"Studien belegen zudem, dass viele Beschäftigte im Homeoffice produktiver sind."'},
+  {q:'Which group is specifically mentioned as struggling in Homeoffice?',opts:['A. Senior managers','B. IT workers','C. New employees still onboarding','D. Part-time workers'],ans:2,exp:'"Besonders für neue Beschäftigte… kann die fehlende physische Präsenz zum Problem werden."'},
+  {q:'In the AI/education text, what does "akademische Integrität" refer to in context?',opts:['A. University entry requirements','B. Ensuring student work is their own','C. School funding policies','D. Teacher qualifications'],ans:1,exp:'The context is about students using AI to write essays — i.e. academic honesty.'},
+  {q:'In the job interview dialogue, what framework does Herr Mensah use for instructional design?',opts:['A. Bloom\'s Taxonomy','B. Scrum','C. ADDIE','D. Design Thinking'],ans:2,exp:'"das ADDIE-Modell als didaktisches Rahmenwerk."'},
+  {q:'In the climate discussion, what does Frau Brandt say about the long-term job creation argument?',opts:['A. She completely rejects it','B. She says it may be true long-term, but workers bear short-term costs','C. She has no response to it','D. She says there is no evidence for it'],ans:1,exp:'"Zugegeben, langfristig mag das stimmen. Aber kurzfristig tragen die Arbeitnehmer die Kosten."'},
+  {q:'The word "vielversprechend" (Vorstellungsgespräch dialogue) means:',opts:['A. Worrying','B. Confusing','C. Promising','D. Unexpected'],ans:2,exp:'vielversprechend = very promising / sounds good.'},
+  {q:'Which text does NOT present a clearly one-sided argument?',opts:['A. Homeoffice article','B. AI in education article','C. Climate discussion','D. All three are balanced'],ans:3,exp:'All three texts present multiple perspectives and reach nuanced conclusions.'},
+  {q:'"Die digitale Kluft" is mentioned as a risk in which context?',opts:['A. Online job applications','B. AI tools in schools','C. Climate data sharing','D. Remote work IT infrastructure'],ans:1,exp:'It appears in the AI/education text regarding unequal school resources.'},
+  {q:'Dr. Hoffmann says the economic risk argument against climate action is:',opts:['A. Completely valid','B. Exaggerated','C. Not relevant','D. His primary concern'],ans:1,exp:'"Das Argument der wirtschaftlichen Gefährdung wird meines Erachtens übertrieben."'},
+  {q:'In the job interview, when will Frau Weber get back to Herr Mensah?',opts:['A. Same day','B. Within 3 days','C. Within the next week','D. After a second interview'],ans:2,exp:'"Wir melden uns innerhalb der nächsten Woche bei Ihnen."'},
+];
+
+const FULL_MOCK = [
+  {q:'Choose the grammatically correct sentence:',opts:['A. Er sagt, er kommt morgen.','B. Er sagt, er komme morgen.','C. Er sagt, er käme morgen.','D. Both B and C are possible'],ans:3,exp:'Konjunktiv I (komme) is standard reported speech; Konj.II (käme) is used if Konj.I is ambiguous.'},
+  {q:'"Das Paket ___ gestern geliefert." (was delivered)',opts:['A. ist … werden','B. wurde … geliefert','C. hat … geliefert','D. wird … geliefert'],ans:1,exp:'Präteritum Passiv = wurde + Partizip II.'},
+  {q:'Select the correct relative clause: "The woman ___ car was stolen called the police."',opts:['A. deren Auto gestohlen wurde','B. die Auto gestohlen wurde','C. dessen Auto gestohlen wurde','D. dem Auto gestohlen wurde'],ans:0,exp:'Genitive feminine = deren.'},
+  {q:'Konjunktiv II of "dürfen" (er/sie/es):',opts:['A. dürfete','B. dürfte','C. dürfe','D. würde dürfen'],ans:1,exp:'dürfte is the Konjunktiv II form of dürfen.'},
+  {q:'"Er arbeitet hart, ___ er keine Ergebnisse sieht." (even though)',opts:['A. damit','B. weil','C. obwohl','D. sodass'],ans:2,exp:'obwohl = even though (concessive).'},
+  {q:'What does "die Umsetzung" mean?',opts:['A. Summary','B. Implementation / realisation','C. Application','D. Translation'],ans:1,exp:'Umsetzung = putting something into practice / implementation.'},
+  {q:'"Eigenverantwortlich" describes someone who:',opts:['A. Works long hours','B. Works in a team','C. Takes personal responsibility and works independently','D. Has managerial experience'],ans:2,exp:'eigen = own; Verantwortung = responsibility → self-directed.'},
+  {q:'Which phrase correctly expresses "I would like a table, please." (formal)',opts:['A. Ich will einen Tisch.','B. Ich hätte gern einen Tisch.','C. Ich werde einen Tisch haben.','D. Ich brauche einen Tisch.'],ans:1,exp:'Ich hätte gern = I would like (polite Konjunktiv II).'},
+  {q:'"Das lässt sich nicht ___ ." (deny)',opts:['A. geleugnet','B. leugnen','C. leugnet','D. geleugnet sein'],ans:1,exp:'lassen + sich + Infinitiv: leugnen (Infinitiv form).'},
+  {q:'Select the correct Genitive preposition sentence:',opts:['A. Wegen des Regens blieb ich zu Hause.','B. Wegen dem Regen blieb ich zu Hause.','C. Wegen den Regen blieb ich zu Hause.','D. Wegen der Regen blieb ich zu Hause.'],ans:0,exp:'wegen + Genitiv: des Regens (masc./neut. -s ending).'},
+  {q:'In the Homeoffice text, what does the author call the key question?',opts:['A. Where people work','B. How they work — with agreements, tech, and trust','C. How many days they come to the office','D. Whether Homeoffice should be legally regulated'],ans:1,exp:'"Entscheidend ist … nicht die Frage, wo gearbeitet wird, sondern wie."'},
+  {q:'"Sowohl die Qualität ___ der Preis waren enttäuschend."',opts:['A. wie','B. und','C. als auch','D. und auch'],ans:2,exp:'sowohl … als auch = both … and.'},
+  {q:'Reported speech: "Ich bin erschöpft." → Er sagte,',opts:['A. er sei erschöpft','B. er wäre erschöpft','C. er ist erschöpft','D. er hat erschöpft'],ans:0,exp:'Konjunktiv I of sein → sei.'},
+  {q:'"Im Hinblick auf" + Akkusativ means:',opts:['A. Instead of','B. With regard to','C. In spite of','D. Due to'],ans:1,exp:'im Hinblick auf = with regard to / considering.'},
+  {q:'Choose the correct sentence about passive with modal in past:',opts:['A. Das Problem hat gelöst werden müssen.','B. Das Problem musste gelöst werden.','C. Das Problem wurde müssen gelöst.','D. Das Problem sollte gelöst haben werden.'],ans:1,exp:'Präteritum of müssen + Passiv Infinitiv = musste … gelöst werden.'},
+  {q:'"___ er zum Meeting kommt, informiere ich dich." (as soon as)',opts:['A. Nachdem','B. Sobald','C. Bevor','D. Seitdem'],ans:1,exp:'sobald = as soon as.'},
+  {q:'In the climate debate, Dr. Hoffmann admits (räumt ein) that:',opts:['A. Renewables are too expensive','B. Economic interests cannot be ignored','C. Germany should slow down climate targets','D. His data might be incorrect'],ans:1,exp:'"Ich räume ein, dass wirtschaftliche Interessen nicht ignoriert werden können."'},
+  {q:'Which word means "to take into consideration"?',opts:['A. berücksichtigen','B. beschreiben','C. beantragen','D. beurteilen'],ans:0,exp:'berücksichtigen = to consider / take into account.'},
+  {q:'"Das Ergebnis ___ noch bekannt." (is not yet known — Zustandspassiv negative)',opts:['A. wird nicht bekannt','B. ist noch nicht bekannt','C. wurde nicht bekannt','D. ist nicht bekannt worden'],ans:1,exp:'ist + nicht + Adjektiv/Partizip = Zustandspassiv stating current state.'},
+  {q:'"Er arbeitet bei einer Firma, ___ Produkte weltbekannt sind."',opts:['A. die','B. deren','C. der','D. denen'],ans:1,exp:'Genitive feminine relative pronoun = deren.'},
+  {q:'Which conjunction introduces a result clause?',opts:['A. obwohl','B. damit','C. sodass','D. sofern'],ans:2,exp:'sodass (so that, expressing result) = consecutive clause.'},
+  {q:'"Letztendlich" is best translated as:',opts:['A. Lately','B. Literally','C. Ultimately / in the end','D. Presumably'],ans:2,exp:'letztendlich = ultimately / in the end.'},
+  {q:'Correct Konjunktiv II conditional (past): "If he had worked harder, he would have been promoted."',opts:['A. Wenn er fleißiger arbeitet, wird er befördert.','B. Wenn er fleißiger gearbeitet hat, wäre er befördert worden.','C. Wenn er fleißiger gearbeitet hätte, wäre er befördert worden.','D. Wenn er fleißiger gearbeitet hätte, würde er befördert sein.'],ans:2,exp:'Past irrealis: hätte + Partizip II … wäre + Partizip II + worden.'},
+  {q:'"Die Schlussfolgerung" in an essay is:',opts:['A. The introduction','B. A counter-argument','C. The conclusion','D. A thesis statement'],ans:2,exp:'Schlussfolgerung = conclusion / inference.'},
+  {q:'Which is NOT a formal closing for a German letter?',opts:['A. Mit freundlichen Grüßen','B. Hochachtungsvoll','C. Bis bald!','D. Mit besten Grüßen'],ans:2,exp:'"Bis bald!" is informal. All others are acceptable formal closings.'},
+];
+
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+const SK = 'b2prog_v2';
+let state = {};
+const scores = {};
+let fcIndex = 0;
+const timers = {};
+
+function load() {
+  try { state = JSON.parse(localStorage.getItem(SK)||'{}'); } catch(e){ state={}; }
+}
+function save() { localStorage.setItem(SK, JSON.stringify(state)); }
+
+// ═══════════════════════════════════════════════
+// QUIZ ENGINE
+// ═══════════════════════════════════════════════
+function buildQuiz(containerId, questions, quizId, onComplete) {
+  const c = document.getElementById(containerId);
+  if (!c) return;
+  c.innerHTML = '';
+  const qb = document.createElement('div');
+  qb.className = 'quiz-block';
+  let answered = 0;
+  questions.forEach((q, qi) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-question';
+    div.id = `qq-${quizId}-${qi}`;
+    div.innerHTML = `<div class="quiz-q">${q.q}</div><div class="quiz-options">${q.opts.map((o,oi)=>`<div class="quiz-opt" data-qi="${qi}" data-oi="${oi}"><div class="quiz-opt-letter">${String.fromCharCode(65+oi)}</div>${o.slice(3)}</div>`).join('')}</div><div class="quiz-feedback" id="fb-${quizId}-${qi}"></div>`;
+    qb.appendChild(div);
+  });
+  const scorePanel = document.createElement('div');
+  scorePanel.className = 'quiz-score-panel';
+  scorePanel.id = `sp-${quizId}`;
+  qb.appendChild(scorePanel);
+  c.appendChild(qb);
+  c.querySelectorAll('.quiz-opt').forEach(opt => {
+    opt.addEventListener('click', function() {
+      const qi = parseInt(this.dataset.qi);
+      const oi = parseInt(this.dataset.oi);
+      const qDiv = document.getElementById(`qq-${quizId}-${qi}`);
+      if (qDiv.classList.contains('correct') || qDiv.classList.contains('incorrect')) return;
+      const q = questions[qi];
+      const fb = document.getElementById(`fb-${quizId}-${qi}`);
+      qDiv.querySelectorAll('.quiz-opt').forEach((o,i)=>{
+        o.classList.add('locked');
+        if (i===q.ans) o.classList.add('correct-ans');
+        if (i===oi && i!==q.ans) o.classList.add('wrong-ans');
+      });
+      const correct = (oi === q.ans);
+      qDiv.classList.add(correct ? 'correct' : 'incorrect');
+      fb.className = `quiz-feedback show ${correct?'ok':'bad'}`;
+      fb.textContent = (correct ? '✓ Correct! ' : '✗ Incorrect. ') + (q.exp||'');
+      answered++;
+      if (answered === questions.length) {
+        const score = c.querySelectorAll('.quiz-question.correct').length;
+        const pct = Math.round((score/questions.length)*100);
+        const panel = document.getElementById(`sp-${quizId}`);
+        const pass = pct >= 60;
+        panel.className = `quiz-score-panel show`;
+        panel.innerHTML = `<div class="score-big">${score}/${questions.length}</div><div class="score-label">${pct}% — ${pass?'Passed':'Not yet — review and try again'}</div><span class="score-badge ${pass?'score-pass':'score-fail'}">${pass?'PASS':'REVIEW'}</span>`;
+        scores[quizId] = pct;
+        if (onComplete) onComplete(pct);
+        updateAll();
+        if (pass) showToast(`${pass?'✓ Quiz passed!':'Quiz complete'} ${pct}%`, pass?'success':'info');
+        save();
+      }
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════
+// UNITS & PROGRESS
+// ═══════════════════════════════════════════════
+function toggleCard(id) {
+  const c = document.getElementById('uc-'+id);
+  if (c) c.classList.toggle('open');
+}
+
+function markUnit(id, ev) {
+  if (ev) ev.stopPropagation();
+  const btn = document.getElementById('ucb-'+id);
+  if (!btn) return;
+  const done = !btn.classList.contains('done');
+  btn.classList.toggle('done', done);
+  state['unit_'+id] = done;
+  save();
+  updateAll();
+  if (done) showToast('Unit marked complete ✓','success');
+}
+
+function updateAll() {
+  const allUnits = document.querySelectorAll('.unit-complete-btn');
+  let done = 0;
+  allUnits.forEach(b => { if (b.classList.contains('done')) done++; });
+  const total = allUnits.length;
+  const pct = total ? Math.round((done/total)*100) : 0;
+
+  // Sidebar ring
+  const circ = 2*Math.PI*20;
+  const offset = circ - (pct/100)*circ;
+  const ring = document.getElementById('ringFill');
+  if (ring) { ring.style.strokeDashoffset = offset; ring.style.strokeDasharray = circ; }
+  const rp = document.getElementById('ringPct'); if(rp) rp.textContent = pct+'%';
+  const sp = document.getElementById('sidebarProgText'); if(sp) sp.textContent = done+' / '+total+' complete';
+  const ss = document.getElementById('sidebarProgSub');
+  if (ss) ss.textContent = pct < 30 ? 'Getting started!' : pct < 70 ? 'Good progress!' : pct < 100 ? 'Almost there!' : 'Complete!';
+
+  // Stats bar
+  const statPct = document.getElementById('statPct'); if(statPct) statPct.textContent = pct+'%';
+  const statDone = document.getElementById('statDone'); if(statDone) statDone.textContent = done;
+
+  // Test avg
+  const testScores = Object.entries(scores).filter(([k])=>k.startsWith('test')).map(([,v])=>v);
+  const avg = testScores.length ? Math.round(testScores.reduce((a,b)=>a+b,0)/testScores.length) : null;
+  const statAvg = document.getElementById('statAvg'); if(statAvg) statAvg.textContent = avg !== null ? avg+'%' : '—';
+  const dashAvg = document.getElementById('dashAvg'); if(dashAvg) dashAvg.textContent = avg !== null ? avg+'%' : '—';
+  const dashDone = document.getElementById('dashDone'); if(dashDone) dashDone.textContent = done;
+
+  // Nav checks
+  const unitSections = {g1:['g1-1','g1-2','g1-3'],g2:['g2-1','g2-2','g2-3'],g3:['g3-1','g3-2'],g4:['g4-1','g4-2'],g5:['g5-1','g5-2'],v1:['v1-1','v1-2'],v2:['v2-1'],v3:['v3-1'],reading:['r1','r2'],listening:['l1','l2'],writing:['w1','w2'],speaking:['sp1','sp2'],test1:['test1-main-unit'],test2:['test2-main-unit'],test3:['test3-main-unit']};
+  for (const [sec, units] of Object.entries(unitSections)) {
+    const nc = document.getElementById('nc-'+sec);
+    if (!nc) continue;
+    const allDone = units.every(u => state['unit_'+u]);
+    nc.classList.toggle('done', allDone);
+  }
+
+  // Certificate
+  updateCert(pct, avg);
+}
+
+function updateCert(pct, avg) {
+  const testScores = Object.entries(scores).filter(([k])=>k.startsWith('test')).map(([,v])=>v);
+  const passedTests = testScores.filter(s=>s>=60).length;
+  const progress = Math.min(100, Math.round((pct*0.5) + (passedTests/3*50)));
+  const certFill = document.getElementById('certProgFill'); if(certFill) certFill.style.width = progress+'%';
+  const certLabel = document.getElementById('certProgLabel'); if(certLabel) certLabel.textContent = progress+'% towards unlock';
+  const unlocked = pct >= 50 && passedTests >= 2;
+  const locked = document.getElementById('certLocked');
+  const cert = document.getElementById('certDisplay');
+  if (locked && cert) {
+    locked.style.display = unlocked ? 'none' : 'block';
+    cert.style.display = unlocked ? 'block' : 'none';
+    if (unlocked) {
+      const dateEl = document.getElementById('certDate');
+      if (dateEl && !dateEl.textContent) dateEl.textContent = new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'});
+      const scoreEl = document.getElementById('certScoreDisplay');
+      if (scoreEl) scoreEl.textContent = avg !== null ? `Avg. Score: ${avg}%` : 'Completed';
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════
+function navigate(sec) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const el = document.getElementById('sec-'+sec);
+  if (el) el.classList.add('active');
+  const navItem = document.querySelector(`.nav-item[data-section="${sec}"]`);
+  if (navItem) navItem.classList.add('active');
+  document.getElementById('content').scrollTop = 0;
+  window.scrollTo(0,0);
+}
+
+document.querySelectorAll('.nav-item[data-section]').forEach(item=>{
+  item.addEventListener('click',()=>navigate(item.dataset.section));
+});
+
+// ═══════════════════════════════════════════════
+// FLASHCARDS
+// ═══════════════════════════════════════════════
+function buildFlashcards() {
+  const c = document.getElementById('flashcard-container');
+  if (!c) return;
+  const card = FLASHCARDS[fcIndex];
+  c.innerHTML = `
+    <div class="flashcard-wrap"><div class="flashcard" id="fc-main" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front"><div class="word">${card.w}</div><div class="hint">${card.h} — click to reveal</div></div>
+      <div class="fc-back"><div class="translation">${card.t}</div><div class="example">${card.e}</div></div>
+    </div></div>
+    <div class="fc-nav">
+      <button class="fc-btn" onclick="fcNav(-1)">← Prev</button>
+      <span class="fc-counter">${fcIndex+1} / ${FLASHCARDS.length}</span>
+      <button class="fc-btn" onclick="fcNav(1)">Next →</button>
+    </div>`;
+}
+function fcNav(dir) {
+  fcIndex = (fcIndex + dir + FLASHCARDS.length) % FLASHCARDS.length;
+  buildFlashcards();
+}
+
+// ═══════════════════════════════════════════════
+// WORD COUNT
+// ═══════════════════════════════════════════════
+function updateWC(id) {
+  const ta = document.getElementById('wt-'+id);
+  const wc = document.getElementById('wc-'+id);
+  if (!ta || !wc) return;
+  const words = ta.value.trim().split(/\s+/).filter(w=>w).length;
+  wc.textContent = words + ' words';
+  const targets = {'w1':[180,220],'w2':[200,250]};
+  const [lo,hi] = targets[id]||[100,300];
+  wc.className = `wc-count ${words>=lo&&words<=hi?'wc-good':words<lo?'wc-low':''}`;
+  // save textarea
+  state['textarea_'+id] = ta.value;
+  save();
+}
+
+// ═══════════════════════════════════════════════
+// SCRIPT TOGGLE
+// ═══════════════════════════════════════════════
+function toggleScript(id) {
+  const sc = document.getElementById('script-'+id);
+  if (sc) sc.classList.toggle('show');
+}
+function toggleAudio(id) {
+  // Simulate audio toggle animation
+  const icon = document.getElementById('play-icon-'+id);
+  const wave = document.getElementById('wave-'+id);
+  if (icon) icon.classList.toggle('paused');
+  if (wave) {
+    const bars = wave.querySelectorAll('.listen-bar');
+    bars.forEach(b => {
+      b.style.background = icon && icon.classList.contains('paused') ? 'var(--gold)' : 'var(--surface3)';
+    });
+  }
+}
+
+// ═══════════════════════════════════════════════
+// SPEAKING TIMER
+// ═══════════════════════════════════════════════
+function startTimer(id, secs) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.display = 'inline';
+  if (timers[id]) { clearInterval(timers[id]); }
+  let remaining = secs;
+  function fmt(s) { return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}` }
+  el.textContent = fmt(remaining);
+  timers[id] = setInterval(()=>{
+    remaining--;
+    el.textContent = fmt(remaining);
+    if (remaining <= 0) {
+      clearInterval(timers[id]);
+      el.textContent = 'Done!';
+      showToast('Time\'s up! ⏰','info');
+    }
+  }, 1000);
+}
+
+// ═══════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════
+function showToast(msg, type='info') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(()=>t.classList.remove('show'), 3000);
+}
+
+// ═══════════════════════════════════════════════
+// CERTIFICATE DOWNLOAD
+// ═══════════════════════════════════════════════
+function downloadCert() {
+  const certEl = document.getElementById('certDisplay');
+  const name = document.getElementById('certName').value || 'Graduate';
+  // Build a printable HTML page
+  const certHTML = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>B2 Certificate — ${name}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f2eb;font-family:'Outfit',sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:40px}
+  .cert{background:#fffef9;border:2px solid #c9a84c;border-radius:16px;padding:70px 80px;max-width:760px;width:100%;text-align:center;position:relative}
+  .corner{position:absolute;width:80px;height:80px;border-color:#c9a84c;border-style:solid}
+  .tl{top:16px;left:16px;border-width:2px 0 0 2px;border-radius:4px 0 0 0}
+  .tr{top:16px;right:16px;border-width:2px 2px 0 0;border-radius:0 4px 0 0}
+  .bl{bottom:16px;left:16px;border-width:0 0 2px 2px;border-radius:0 0 0 4px}
+  .br{bottom:16px;right:16px;border-width:0 2px 2px 0;border-radius:0 0 4px 0}
+  .emblem{font-size:52px;margin-bottom:16px}
+  .issued{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#9a948c;margin-bottom:16px}
+  .title{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:#c9a84c;line-height:1.1;margin-bottom:6px}
+  .subtitle{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#5a5650;margin-bottom:24px}
+  .name{font-family:'Cormorant Garamond',serif;font-size:34px;border-bottom:1px solid #c9a84c;padding-bottom:12px;margin:0 auto 20px;max-width:420px;color:#1a1714}
+  .body{font-size:14px;color:#5a5650;line-height:1.8;max-width:480px;margin:0 auto 20px}
+  .score{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:26px;color:#c9a84c;border:1px solid rgba(201,168,76,0.3);padding:10px 28px;border-radius:8px;margin-bottom:24px}
+  .footer{display:flex;justify-content:space-around;padding-top:20px;border-top:1px solid rgba(26,23,20,0.12);font-size:12px;color:#9a948c}
+  </style></head><body>
+  <div class="cert">
+    <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    <div class="emblem">🎓</div>
+    <div class="issued">This certifies that</div>
+    <div class="name">${name}</div>
+    <div class="title">Goethe-Zertifikat</div>
+    <div class="subtitle">Niveau B2 — Selbststudium</div>
+    <p class="body">has successfully completed the <strong>Deutsch B2 Complete Study Programme</strong>, demonstrating Upper Intermediate proficiency in grammar, vocabulary, reading, listening, writing, and speaking according to the CEFR framework.</p>
+    <div class="score">${document.getElementById('certScoreDisplay').textContent}</div>
+    <div class="footer">
+      <div><div style="font-size:14px;color:#1a1714;margin-bottom:4px">CEFR Level</div>B2 — Vantage</div>
+      <div><div style="font-size:14px;color:#1a1714;margin-bottom:4px">Date</div>${document.getElementById('certDate').textContent}</div>
+      <div><div style="font-size:14px;color:#1a1714;margin-bottom:4px">Programme</div>Self-Study</div>
+    </div>
+  </div>
+  </body></html>`;
+  const blob = new Blob([certHTML], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `Deutsch_B2_Certificate_${name.replace(/\s+/g,'_')}.html`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Certificate downloaded! Open the HTML file to print/save as PDF.','success');
+}
+
+// ═══════════════════════════════════════════════
+// LOAD SAVED STATE
+// ═══════════════════════════════════════════════
+function restoreState() {
+  // Units
+  for (const [k,v] of Object.entries(state)) {
+    if (k.startsWith('unit_') && v) {
+      const id = k.replace('unit_','');
+      const btn = document.getElementById('ucb-'+id);
+      if (btn) btn.classList.add('done');
+    }
+    if (k.startsWith('textarea_')) {
+      const id = k.replace('textarea_','');
+      const ta = document.getElementById('wt-'+id);
+      if (ta) { ta.value = v; updateWC(id); }
+    }
+  }
+  // Lesson checkboxes
+  document.querySelectorAll('.lesson-cb').forEach(cb => {
+    const key = `cb_${cb.dataset.unit}_${Array.from(cb.closest('ul').querySelectorAll('.lesson-cb')).indexOf(cb)}`;
+    if (state[key]) cb.checked = true;
+    cb.addEventListener('change', function() {
+      const k = `cb_${this.dataset.unit}_${Array.from(this.closest('ul').querySelectorAll('.lesson-cb')).indexOf(this)}`;
+      state[k] = this.checked;
+      save();
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════
+// SPLASH
+// ═══════════════════════════════════════════════
+function startApp() {
+  document.getElementById('splash').classList.add('gone');
+  const app = document.getElementById('app');
+  app.style.display = 'block';
+  document.getElementById('statsBar').style.display = 'flex';
+  setTimeout(()=>{
+    // Build all quizzes
+    buildQuiz('quiz-g1', QUIZZES.g1, 'g1-quiz');
+    buildQuiz('quiz-g2', QUIZZES.g2, 'g2-quiz');
+    buildQuiz('quiz-g3', QUIZZES.g3, 'g3-quiz');
+    buildQuiz('quiz-g4', QUIZZES.g4, 'g4-quiz');
+    buildQuiz('quiz-g5', QUIZZES.g5, 'g5-quiz');
+    buildQuiz('quiz-v1', QUIZZES.v1, 'v1-quiz');
+    buildQuiz('quiz-r1', QUIZZES.r1, 'r1-quiz');
+    buildQuiz('quiz-r2', QUIZZES.r2, 'r2-quiz');
+    buildQuiz('quiz-l1', QUIZZES.l1, 'l1-quiz');
+    buildQuiz('quiz-l2', QUIZZES.l2, 'l2-quiz');
+    buildQuiz('quiz-test1-main', BIG_GRAMMAR_TEST, 'test1', pct=>{ scores['test1']=pct; state['unit_test1-main-unit']=pct>=60; const b=document.getElementById('ucb-test1-main-unit'); if(b&&pct>=60)b.classList.add('done'); updateAll(); });
+    buildQuiz('quiz-test2-main', READING_TEST, 'test2', pct=>{ scores['test2']=pct; state['unit_test2-main-unit']=pct>=60; const b=document.getElementById('ucb-test2-main-unit'); if(b&&pct>=60)b.classList.add('done'); updateAll(); });
+    buildQuiz('quiz-test3-main', FULL_MOCK, 'test3', pct=>{ scores['test3']=pct; state['unit_test3-main-unit']=pct>=60; const b=document.getElementById('ucb-test3-main-unit'); if(b&&pct>=60)b.classList.add('done'); updateAll(); });
+    buildFlashcards();
+    restoreState();
+    updateAll();
+  }, 100);
+}
+
+load();
+</script>
+</body>
+</html>
